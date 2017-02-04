@@ -48,8 +48,11 @@
   <ItemGroup>
     <Compile Include="Block.cs" />
     <Compile Include="Block_I.cs" />
+    <Compile Include="Block_J.cs" />
+    <Compile Include="Block_L.cs" />
     <Compile Include="Block_O.cs" />
     <Compile Include="Block_T.cs" />
+    <Compile Include="Block_Z.cs" />
     <Compile Include="Constant.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
