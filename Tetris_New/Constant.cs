@@ -21,14 +21,15 @@ namespace Tetris_New {
         public const int MIN_VALUE = 0;                 //地图元素最小值
         public const int MAX_VALUE = 8;                //地图元素最大值
         public const int VALUE_NONE = 0;
-        public const int MIN_BLOCK_VALUE = 1;
-        public const int MAX_BLOCK_VALUE = 6;
-        public const int BLOCK_BOMB_CORE_VALUE = 5;
-        public const int BLOCK_BOMB_OUT_VALUE = 7;
-        public const int EXPLOSION_VALUE = 8;
+        public const int MIN_BLOCK_VALUE = 1;                           //普通方块值的最小值
+        public const int MAX_BLOCK_VALUE = 6;                          //普通方块值的最大值
+        public const int CUSTOM_VALUE = 3;                               //自定义模式中的残留方块的值
+        public const int BLOCK_BOMB_CORE_VALUE = 5;            //超级炸弹中心方块
+        public const int BLOCK_BOMB_OUT_VALUE = 7;              //超级炸弹周围方块
+        public const int EXPLOSION_VALUE = 8;                          //爆炸中的方块值
 
         //数值到颜色的转换
-        public Color valueToColor(int value) {
+        public static Color valueToColor(int value) {
             switch (value) {
                 case 0: return Color.FromArgb(224, 224, 224);
                 case 1: return Color.Yellow;
@@ -62,6 +63,27 @@ namespace Tetris_New {
         public const int BLOCK_TYPE_EXTENSION5 = 13;                   //4 5
         public const int BLOCK_TYPE_EXTENSION6 = 14;                    //1 2 7 8
         public const int BLOCK_TYPE_EXTENSION7 = 15;                   //1 2 8 9
+        public const int BLOCK_TYPE_EXTENSION8 = 16;                   //2 3 7 8
+
+        //游戏模式
+        public const int CLASSIC_MODE = 0;
+        public const int CHALLENGE_MODE = 1;
+        public const int CUSTOM_MODE = 2;
+        public const int FIRE_MODE = 3;
+
+        //边框颜色
+        public static Color BorderColor0 = Color.Silver;
+        public static Color BorderColor1 = Color.Blue;
+        public static Color TextColor0 = Color.Silver;
+        public static Color TextColor1 = Color.Blue;
+
+        //跨越边界
+        public const bool NO_BOUNDARY_ACC = false;
+        public const bool BOUNDARY_ACC = true;
+
+        //炸弹是否可用
+        public const bool NO_BOMB = false;
+        public const bool HAVE_BOMB = true;
         
     }
 }

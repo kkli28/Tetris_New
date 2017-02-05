@@ -47,13 +47,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Block.cs" />
+    <Compile Include="Block_Bomb.cs" />
+    <Compile Include="Block_E1.cs" />
+    <Compile Include="Block_E2.cs" />
+    <Compile Include="Block_E3.cs" />
+    <Compile Include="Block_E4.cs" />
+    <Compile Include="Block_E5.cs" />
+    <Compile Include="Block_E6.cs" />
+    <Compile Include="Block_E7.cs" />
+    <Compile Include="Block_E8.cs" />
     <Compile Include="Block_I.cs" />
     <Compile Include="Block_J.cs" />
     <Compile Include="Block_L.cs" />
     <Compile Include="Block_O.cs" />
+    <Compile Include="Block_S.cs" />
+    <Compile Include="Block_SuperBomb.cs" />
     <Compile Include="Block_T.cs" />
     <Compile Include="Block_Z.cs" />
+    <Compile Include="ChooseHurdleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseHurdleForm.Designer.cs">
+      <DependentUpon>ChooseHurdleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Constant.cs" />
+    <Compile Include="CostomForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CostomForm.Designer.cs">
+      <DependentUpon>CostomForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +99,9 @@
     <Compile Include="Point.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChooseHurdleForm.resx">
+      <DependentUpon>ChooseHurdleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>

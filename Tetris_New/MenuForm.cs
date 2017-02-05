@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace Tetris_New {
     public partial class MenuForm : Form {
+        public static MenuForm thisForm;
+
         public MenuForm() {
             InitializeComponent();
+
+            thisForm = this;
         }
 
         private void classicBtn_Click(object sender, EventArgs e) {
-            GameForm gf = new GameForm();
+            GameForm gf = new GameForm(Constant.CLASSIC_MODE,false,false);
             gf.ShowDialog();
         }
 
@@ -40,24 +44,30 @@ namespace Tetris_New {
             hf.ShowDialog();
         }
 
-        private void button35_Click(object sender, EventArgs e) {
-
-        }
-
-        private void button36_Click(object sender, EventArgs e) {
-
-        }
-
-        private void button34_Click(object sender, EventArgs e) {
-
-        }
-
-        private void button33_Click(object sender, EventArgs e) {
-
-        }
-
         private void button43_Click(object sender, EventArgs e) {
             MessageBox.Show("我是超级宇宙无敌大炸弹！嗷呜~  凸(艹皿艹 )");
+        }
+
+        private void challengeBtn_Click(object sender, EventArgs e) {
+            ChooseHurdleForm chf = new ChooseHurdleForm();
+            chf.Show();
+            this.Hide();
+        }
+
+        private void helpBtn_MouseEnter(object sender, EventArgs e) {
+            Button btn = (Button)sender;
+            btn.FlatAppearance.BorderColor = Constant.BorderColor1;
+            btn.ForeColor = Constant.TextColor1;
+        }
+
+        private void helpBtn_MouseLeave(object sender, EventArgs e) {
+            Button btn = (Button)sender;
+            btn.FlatAppearance.BorderColor = Constant.BorderColor0;
+            btn.ForeColor = Constant.TextColor0;
+        }
+
+        private void customBtn_Click(object sender, EventArgs e) {
+            //自定义模式窗体
         }
     }
 }

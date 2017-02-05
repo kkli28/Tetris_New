@@ -10,8 +10,21 @@ using System.Windows.Forms;
 
 namespace Tetris_New {
     public partial class GameForm : Form {
-        public GameForm() {
+        Random random;
+        int gameMode;
+        int score;
+        int record;
+        bool bdAcc;                         //边界跨越选项
+        bool haveBomb;                  //是否有炸弹
+
+        //构造函数--需要参数：游戏模式、是否跨越边界、是否有炸弹、第几关
+        public GameForm(int mode, bool bda, bool hb, int hd = -1, Point[] points =null) {
             InitializeComponent();
+
+            //TODO: 添加参数判断
+            gameMode = mode;
+            bdAcc = bda;
+            haveBomb = hb;
         }
 
         public Color intToColor(int i) {
@@ -29,6 +42,10 @@ namespace Tetris_New {
 
         private void GameForm_Load(object sender, EventArgs e) {
 
+        }
+
+        private void GameForm_FormClosed(object sender, FormClosedEventArgs e) {
+            MenuForm.thisForm.Show();
         }
     }
 }

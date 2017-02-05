@@ -318,6 +318,32 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.nextBtn1 = new System.Windows.Forms.Button();
+            this.nextBtn2 = new System.Windows.Forms.Button();
+            this.nextBtn3 = new System.Windows.Forms.Button();
+            this.nextBtn4 = new System.Windows.Forms.Button();
+            this.nextBtn5 = new System.Windows.Forms.Button();
+            this.nextBtn6 = new System.Windows.Forms.Button();
+            this.nextBtn7 = new System.Windows.Forms.Button();
+            this.nextBtn8 = new System.Windows.Forms.Button();
+            this.nextBtn9 = new System.Windows.Forms.Button();
+            this.nextBtn10 = new System.Windows.Forms.Button();
+            this.nextBtn11 = new System.Windows.Forms.Button();
+            this.nextBtn12 = new System.Windows.Forms.Button();
+            this.nextBtn13 = new System.Windows.Forms.Button();
+            this.nextBtn14 = new System.Windows.Forms.Button();
+            this.nextBtn15 = new System.Windows.Forms.Button();
+            this.nextBtn16 = new System.Windows.Forms.Button();
+            this.button292 = new System.Windows.Forms.Button();
+            this.button293 = new System.Windows.Forms.Button();
+            this.button294 = new System.Windows.Forms.Button();
+            this.button295 = new System.Windows.Forms.Button();
+            this.button296 = new System.Windows.Forms.Button();
+            this.button297 = new System.Windows.Forms.Button();
+            this.button298 = new System.Windows.Forms.Button();
+            this.button299 = new System.Windows.Forms.Button();
+            this.gameModeLB = new System.Windows.Forms.Label();
+            this.boundaryAccLB = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button0
@@ -4354,7 +4380,7 @@
             // 
             // button288
             // 
-            this.button288.BackColor = System.Drawing.Color.Gray;
+            this.button288.BackColor = System.Drawing.Color.Silver;
             this.button288.Enabled = false;
             this.button288.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button288.FlatAppearance.BorderSize = 0;
@@ -4368,7 +4394,7 @@
             // 
             // button289
             // 
-            this.button289.BackColor = System.Drawing.Color.Gray;
+            this.button289.BackColor = System.Drawing.Color.Silver;
             this.button289.Enabled = false;
             this.button289.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button289.FlatAppearance.BorderSize = 0;
@@ -4382,7 +4408,7 @@
             // 
             // button290
             // 
-            this.button290.BackColor = System.Drawing.Color.Gray;
+            this.button290.BackColor = System.Drawing.Color.Silver;
             this.button290.Enabled = false;
             this.button290.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button290.FlatAppearance.BorderSize = 0;
@@ -4396,7 +4422,7 @@
             // 
             // button291
             // 
-            this.button291.BackColor = System.Drawing.Color.Gray;
+            this.button291.BackColor = System.Drawing.Color.Silver;
             this.button291.Enabled = false;
             this.button291.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.button291.FlatAppearance.BorderSize = 0;
@@ -4412,34 +4438,394 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.Gray;
+            this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(12, 644);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 19);
+            this.label1.Size = new System.Drawing.Size(196, 19);
             this.label1.TabIndex = 430;
-            this.label1.Text = "W: 上    S: 下    A: 左    D: 右";
+            this.label1.Text = "W: 旋转    S: 下    A: 左    D: 右";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(333, 16);
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.ForeColor = System.Drawing.Color.Blue;
+            this.label2.Location = new System.Drawing.Point(351, 178);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 28);
+            this.label2.Size = new System.Drawing.Size(51, 21);
             this.label2.TabIndex = 431;
             this.label2.Text = "记录: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(333, 70);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.ForeColor = System.Drawing.Color.Blue;
+            this.label3.Location = new System.Drawing.Point(351, 215);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 28);
+            this.label3.Size = new System.Drawing.Size(51, 21);
             this.label3.TabIndex = 432;
             this.label3.Text = "得分: ";
+            // 
+            // nextBtn1
+            // 
+            this.nextBtn1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn1.Enabled = false;
+            this.nextBtn1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn1.FlatAppearance.BorderSize = 0;
+            this.nextBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn1.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn1.Location = new System.Drawing.Point(349, 16);
+            this.nextBtn1.Name = "nextBtn1";
+            this.nextBtn1.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn1.TabIndex = 433;
+            this.nextBtn1.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn2
+            // 
+            this.nextBtn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn2.Enabled = false;
+            this.nextBtn2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn2.FlatAppearance.BorderSize = 0;
+            this.nextBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn2.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn2.Location = new System.Drawing.Point(374, 16);
+            this.nextBtn2.Name = "nextBtn2";
+            this.nextBtn2.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn2.TabIndex = 434;
+            this.nextBtn2.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn3
+            // 
+            this.nextBtn3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn3.Enabled = false;
+            this.nextBtn3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn3.FlatAppearance.BorderSize = 0;
+            this.nextBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn3.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn3.Location = new System.Drawing.Point(399, 16);
+            this.nextBtn3.Name = "nextBtn3";
+            this.nextBtn3.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn3.TabIndex = 435;
+            this.nextBtn3.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn4
+            // 
+            this.nextBtn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn4.Enabled = false;
+            this.nextBtn4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn4.FlatAppearance.BorderSize = 0;
+            this.nextBtn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn4.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn4.Location = new System.Drawing.Point(424, 16);
+            this.nextBtn4.Name = "nextBtn4";
+            this.nextBtn4.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn4.TabIndex = 436;
+            this.nextBtn4.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn5
+            // 
+            this.nextBtn5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn5.Enabled = false;
+            this.nextBtn5.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn5.FlatAppearance.BorderSize = 0;
+            this.nextBtn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn5.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn5.Location = new System.Drawing.Point(349, 41);
+            this.nextBtn5.Name = "nextBtn5";
+            this.nextBtn5.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn5.TabIndex = 437;
+            this.nextBtn5.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn6
+            // 
+            this.nextBtn6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn6.Enabled = false;
+            this.nextBtn6.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn6.FlatAppearance.BorderSize = 0;
+            this.nextBtn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn6.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn6.Location = new System.Drawing.Point(374, 41);
+            this.nextBtn6.Name = "nextBtn6";
+            this.nextBtn6.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn6.TabIndex = 438;
+            this.nextBtn6.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn7
+            // 
+            this.nextBtn7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn7.Enabled = false;
+            this.nextBtn7.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn7.FlatAppearance.BorderSize = 0;
+            this.nextBtn7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn7.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn7.Location = new System.Drawing.Point(399, 41);
+            this.nextBtn7.Name = "nextBtn7";
+            this.nextBtn7.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn7.TabIndex = 439;
+            this.nextBtn7.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn8
+            // 
+            this.nextBtn8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn8.Enabled = false;
+            this.nextBtn8.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn8.FlatAppearance.BorderSize = 0;
+            this.nextBtn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn8.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn8.Location = new System.Drawing.Point(424, 41);
+            this.nextBtn8.Name = "nextBtn8";
+            this.nextBtn8.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn8.TabIndex = 440;
+            this.nextBtn8.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn9
+            // 
+            this.nextBtn9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn9.Enabled = false;
+            this.nextBtn9.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn9.FlatAppearance.BorderSize = 0;
+            this.nextBtn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn9.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn9.Location = new System.Drawing.Point(349, 66);
+            this.nextBtn9.Name = "nextBtn9";
+            this.nextBtn9.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn9.TabIndex = 441;
+            this.nextBtn9.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn10
+            // 
+            this.nextBtn10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn10.Enabled = false;
+            this.nextBtn10.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn10.FlatAppearance.BorderSize = 0;
+            this.nextBtn10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn10.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn10.Location = new System.Drawing.Point(374, 66);
+            this.nextBtn10.Name = "nextBtn10";
+            this.nextBtn10.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn10.TabIndex = 442;
+            this.nextBtn10.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn11
+            // 
+            this.nextBtn11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn11.Enabled = false;
+            this.nextBtn11.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn11.FlatAppearance.BorderSize = 0;
+            this.nextBtn11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn11.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn11.Location = new System.Drawing.Point(399, 66);
+            this.nextBtn11.Name = "nextBtn11";
+            this.nextBtn11.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn11.TabIndex = 443;
+            this.nextBtn11.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn12
+            // 
+            this.nextBtn12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn12.Enabled = false;
+            this.nextBtn12.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn12.FlatAppearance.BorderSize = 0;
+            this.nextBtn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn12.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn12.Location = new System.Drawing.Point(424, 66);
+            this.nextBtn12.Name = "nextBtn12";
+            this.nextBtn12.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn12.TabIndex = 444;
+            this.nextBtn12.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn13
+            // 
+            this.nextBtn13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn13.Enabled = false;
+            this.nextBtn13.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn13.FlatAppearance.BorderSize = 0;
+            this.nextBtn13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn13.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn13.Location = new System.Drawing.Point(349, 91);
+            this.nextBtn13.Name = "nextBtn13";
+            this.nextBtn13.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn13.TabIndex = 445;
+            this.nextBtn13.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn14
+            // 
+            this.nextBtn14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn14.Enabled = false;
+            this.nextBtn14.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn14.FlatAppearance.BorderSize = 0;
+            this.nextBtn14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn14.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn14.Location = new System.Drawing.Point(374, 91);
+            this.nextBtn14.Name = "nextBtn14";
+            this.nextBtn14.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn14.TabIndex = 446;
+            this.nextBtn14.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn15
+            // 
+            this.nextBtn15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn15.Enabled = false;
+            this.nextBtn15.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn15.FlatAppearance.BorderSize = 0;
+            this.nextBtn15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn15.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn15.Location = new System.Drawing.Point(399, 91);
+            this.nextBtn15.Name = "nextBtn15";
+            this.nextBtn15.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn15.TabIndex = 447;
+            this.nextBtn15.UseVisualStyleBackColor = false;
+            // 
+            // nextBtn16
+            // 
+            this.nextBtn16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.nextBtn16.Enabled = false;
+            this.nextBtn16.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.nextBtn16.FlatAppearance.BorderSize = 0;
+            this.nextBtn16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextBtn16.ForeColor = System.Drawing.Color.Black;
+            this.nextBtn16.Location = new System.Drawing.Point(424, 91);
+            this.nextBtn16.Name = "nextBtn16";
+            this.nextBtn16.Size = new System.Drawing.Size(24, 24);
+            this.nextBtn16.TabIndex = 448;
+            this.nextBtn16.UseVisualStyleBackColor = false;
+            // 
+            // button292
+            // 
+            this.button292.BackColor = System.Drawing.Color.Silver;
+            this.button292.Enabled = false;
+            this.button292.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button292.FlatAppearance.BorderSize = 0;
+            this.button292.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button292.ForeColor = System.Drawing.Color.Black;
+            this.button292.Location = new System.Drawing.Point(345, 16);
+            this.button292.Name = "button292";
+            this.button292.Size = new System.Drawing.Size(4, 100);
+            this.button292.TabIndex = 449;
+            this.button292.UseVisualStyleBackColor = false;
+            // 
+            // button293
+            // 
+            this.button293.BackColor = System.Drawing.Color.Silver;
+            this.button293.Enabled = false;
+            this.button293.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button293.FlatAppearance.BorderSize = 0;
+            this.button293.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button293.ForeColor = System.Drawing.Color.Black;
+            this.button293.Location = new System.Drawing.Point(448, 16);
+            this.button293.Name = "button293";
+            this.button293.Size = new System.Drawing.Size(4, 100);
+            this.button293.TabIndex = 450;
+            this.button293.UseVisualStyleBackColor = false;
+            // 
+            // button294
+            // 
+            this.button294.BackColor = System.Drawing.Color.Silver;
+            this.button294.Enabled = false;
+            this.button294.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button294.FlatAppearance.BorderSize = 0;
+            this.button294.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button294.ForeColor = System.Drawing.Color.Black;
+            this.button294.Location = new System.Drawing.Point(345, 12);
+            this.button294.Name = "button294";
+            this.button294.Size = new System.Drawing.Size(107, 4);
+            this.button294.TabIndex = 451;
+            this.button294.UseVisualStyleBackColor = false;
+            // 
+            // button295
+            // 
+            this.button295.BackColor = System.Drawing.Color.Silver;
+            this.button295.Enabled = false;
+            this.button295.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button295.FlatAppearance.BorderSize = 0;
+            this.button295.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button295.ForeColor = System.Drawing.Color.Black;
+            this.button295.Location = new System.Drawing.Point(345, 115);
+            this.button295.Name = "button295";
+            this.button295.Size = new System.Drawing.Size(107, 4);
+            this.button295.TabIndex = 452;
+            this.button295.UseVisualStyleBackColor = false;
+            // 
+            // button296
+            // 
+            this.button296.BackColor = System.Drawing.Color.Silver;
+            this.button296.Enabled = false;
+            this.button296.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button296.FlatAppearance.BorderSize = 0;
+            this.button296.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button296.ForeColor = System.Drawing.Color.Black;
+            this.button296.Location = new System.Drawing.Point(345, 166);
+            this.button296.Name = "button296";
+            this.button296.Size = new System.Drawing.Size(4, 240);
+            this.button296.TabIndex = 453;
+            this.button296.UseVisualStyleBackColor = false;
+            // 
+            // button297
+            // 
+            this.button297.BackColor = System.Drawing.Color.Silver;
+            this.button297.Enabled = false;
+            this.button297.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button297.FlatAppearance.BorderSize = 0;
+            this.button297.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button297.ForeColor = System.Drawing.Color.Black;
+            this.button297.Location = new System.Drawing.Point(345, 162);
+            this.button297.Name = "button297";
+            this.button297.Size = new System.Drawing.Size(107, 4);
+            this.button297.TabIndex = 454;
+            this.button297.UseVisualStyleBackColor = false;
+            // 
+            // button298
+            // 
+            this.button298.BackColor = System.Drawing.Color.White;
+            this.button298.Enabled = false;
+            this.button298.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.button298.FlatAppearance.BorderSize = 2;
+            this.button298.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button298.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.button298.ForeColor = System.Drawing.Color.Blue;
+            this.button298.Location = new System.Drawing.Point(345, 589);
+            this.button298.Name = "button298";
+            this.button298.Size = new System.Drawing.Size(72, 36);
+            this.button298.TabIndex = 455;
+            this.button298.Text = "开始";
+            this.button298.UseVisualStyleBackColor = false;
+            // 
+            // button299
+            // 
+            this.button299.BackColor = System.Drawing.Color.Silver;
+            this.button299.Enabled = false;
+            this.button299.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button299.FlatAppearance.BorderSize = 0;
+            this.button299.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button299.ForeColor = System.Drawing.Color.Black;
+            this.button299.Location = new System.Drawing.Point(349, 248);
+            this.button299.Name = "button299";
+            this.button299.Size = new System.Drawing.Size(107, 4);
+            this.button299.TabIndex = 456;
+            this.button299.UseVisualStyleBackColor = false;
+            // 
+            // gameModeLB
+            // 
+            this.gameModeLB.AutoSize = true;
+            this.gameModeLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.gameModeLB.ForeColor = System.Drawing.Color.Blue;
+            this.gameModeLB.Location = new System.Drawing.Point(351, 271);
+            this.gameModeLB.Name = "gameModeLB";
+            this.gameModeLB.Size = new System.Drawing.Size(61, 19);
+            this.gameModeLB.TabIndex = 457;
+            this.gameModeLB.Text = "经典模式";
+            // 
+            // boundaryAccLB
+            // 
+            this.boundaryAccLB.AutoSize = true;
+            this.boundaryAccLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.boundaryAccLB.ForeColor = System.Drawing.Color.Blue;
+            this.boundaryAccLB.Location = new System.Drawing.Point(351, 305);
+            this.boundaryAccLB.Name = "boundaryAccLB";
+            this.boundaryAccLB.Size = new System.Drawing.Size(74, 19);
+            this.boundaryAccLB.TabIndex = 458;
+            this.boundaryAccLB.Text = "不跨越边界";
             // 
             // GameForm
             // 
@@ -4447,6 +4833,32 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(496, 681);
+            this.Controls.Add(this.boundaryAccLB);
+            this.Controls.Add(this.gameModeLB);
+            this.Controls.Add(this.button299);
+            this.Controls.Add(this.button298);
+            this.Controls.Add(this.button297);
+            this.Controls.Add(this.button296);
+            this.Controls.Add(this.button295);
+            this.Controls.Add(this.button294);
+            this.Controls.Add(this.button293);
+            this.Controls.Add(this.button292);
+            this.Controls.Add(this.nextBtn16);
+            this.Controls.Add(this.nextBtn15);
+            this.Controls.Add(this.nextBtn14);
+            this.Controls.Add(this.nextBtn13);
+            this.Controls.Add(this.nextBtn12);
+            this.Controls.Add(this.nextBtn11);
+            this.Controls.Add(this.nextBtn10);
+            this.Controls.Add(this.nextBtn9);
+            this.Controls.Add(this.nextBtn8);
+            this.Controls.Add(this.nextBtn7);
+            this.Controls.Add(this.nextBtn6);
+            this.Controls.Add(this.nextBtn5);
+            this.Controls.Add(this.nextBtn4);
+            this.Controls.Add(this.nextBtn3);
+            this.Controls.Add(this.nextBtn2);
+            this.Controls.Add(this.nextBtn1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -4748,6 +5160,7 @@
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "俄罗斯方块";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
             this.Load += new System.EventHandler(this.GameForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -5051,5 +5464,31 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button nextBtn1;
+        private System.Windows.Forms.Button nextBtn2;
+        private System.Windows.Forms.Button nextBtn3;
+        private System.Windows.Forms.Button nextBtn4;
+        private System.Windows.Forms.Button nextBtn5;
+        private System.Windows.Forms.Button nextBtn6;
+        private System.Windows.Forms.Button nextBtn7;
+        private System.Windows.Forms.Button nextBtn8;
+        private System.Windows.Forms.Button nextBtn9;
+        private System.Windows.Forms.Button nextBtn10;
+        private System.Windows.Forms.Button nextBtn11;
+        private System.Windows.Forms.Button nextBtn12;
+        private System.Windows.Forms.Button nextBtn13;
+        private System.Windows.Forms.Button nextBtn14;
+        private System.Windows.Forms.Button nextBtn15;
+        private System.Windows.Forms.Button nextBtn16;
+        private System.Windows.Forms.Button button292;
+        private System.Windows.Forms.Button button293;
+        private System.Windows.Forms.Button button294;
+        private System.Windows.Forms.Button button295;
+        private System.Windows.Forms.Button button296;
+        private System.Windows.Forms.Button button297;
+        private System.Windows.Forms.Button button298;
+        private System.Windows.Forms.Button button299;
+        private System.Windows.Forms.Label gameModeLB;
+        private System.Windows.Forms.Label boundaryAccLB;
     }
 }

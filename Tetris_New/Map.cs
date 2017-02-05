@@ -42,23 +42,23 @@ namespace Tetris_New {
         public void setValue(int x, int y, int value) {
             if (validX(x) && validY(y) && validValue(value))
                 map[x, y] = value;
-            else throw new Exception("Map::setValue(int,int,int), (x,y,vlaue): "
-                + x.ToString() + "," + y.ToString() + "," + value.ToString());
+            else throw new Exception();
         }
 
         //设置值--通过点
-        public void setValue(Point p) {
-            if (!p.isValid()) throw new Exception("Map::setValue(Point), 点不合法！");
+        public void setValue(Point p,int val) {
+            if (!p.isValid()) throw new Exception();
+            if (!validValue(val)) throw new Exception();
             int x = p.X;
             int y = p.Y;
-            map[x, y] = p.Color;
+            map[x, y] = val;
             if (x < minX) minX = x;                     //设置有值的最小行数
         }
 
         //获取值--通过坐标
         public int getValue(int x, int y) {
             if (validX(x) && validY(y)) return map[x, y];
-            else throw new Exception("Map::getValue(int,int), (x,y): " + x.ToString() + "," + y.ToString());
+            else throw new Exception();
         }
 
         //获取值--通过索引
@@ -67,13 +67,13 @@ namespace Tetris_New {
                 int x = index / (Constant.MAX_Y + 1);
                 int y = index % (Constant.MAX_Y + 1);
                 return map[x, y];
-            } else throw new Exception("Map::getValue(int), index: " + index.ToString());
+            } else throw new Exception();
         }
 
         //获取值--通过点
         public int getValue(Point p) {
             if (p.isValid()) return map[p.X, p.Y];
-            else throw new Exception("Map::getValue(Point), 点不合法！");
+            else throw new Exception();
         }
 
         //获取图信息
@@ -94,12 +94,12 @@ namespace Tetris_New {
             
             //普通炸弹
             if (block.getType() == Constant.BLOCK_TYPE_BOMB) {
-                smallExplosion(block.getCore());
+                smallExplosion(block.getPoint0());
             }
             
             //超级炸弹 
             else if (block.getType() == Constant.BLOCK_TYPE_SUPER_BOMB) {
-                bigExplosion(block.getCore());
+                bigExplosion(block.getPoint4());
             } 
             
             //普通方块
@@ -153,7 +153,7 @@ namespace Tetris_New {
 
         //index行的所有上方行下移
         public void moveLines(int index) {
-            if (!validIndex(index)) throw new Exception("Map::moveLines(int), index: " + index.ToString());
+            if (!validIndex(index)) throw new Exception();
 
             //行从index到minX-1，所有上行复制值到下行
             for (int i = index; i > minX; --i) {
