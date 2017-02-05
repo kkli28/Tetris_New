@@ -29,7 +29,7 @@ namespace Tetris_New {
         public abstract void copyFrom(Block b);                   //复制方块信息
 
         //检查 pos 方向是否可移动
-        public bool checkPos(Map map, Point[] points, int len, string pos) {
+        public static bool checkPos(Map map, Point[] points, int len, string pos) {
             if (len < 0 || len >= Constant.MAX_INDEX) throw new Exception();
 
             int addX = 0;
@@ -48,7 +48,7 @@ namespace Tetris_New {
             return true;
         }
 
-        public bool checkPoints(Map map,Point[] points,int len) {
+        public static bool checkPoints(Map map,Point[] points,int len) {
             if (len < 0 || len >= Constant.MAX_INDEX) throw new Exception();
             for (int i = 0; i < len; i++) {
                 if (!points[i].isValid()) return false;
@@ -56,6 +56,5 @@ namespace Tetris_New {
             }
             return true;
         }
-        
     }
 }

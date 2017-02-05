@@ -1,0 +1,11 @@
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\bin\Debug\Tetris_New.exe.config
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\bin\Debug\Tetris_New.exe
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\bin\Debug\Tetris_New.pdb
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.csprojResolveAssemblyReference.cache
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.GameForm.resources
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.MenuForm.resources
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.Properties.Resources.resources
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.csproj.GenerateResource.Cache
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.exe
+c:\users\kkli\documents\visual studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.pdb
+C:\Users\kkli\Documents\Visual Studio 2015\Projects\Tetris_New\Tetris_New\obj\Debug\Tetris_New.HelpForm.resources

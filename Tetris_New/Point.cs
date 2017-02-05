@@ -45,13 +45,13 @@ namespace Tetris_New {
         }
 
         //设置点--通过索引
-        public void setPoint(int index) {
+        public void set(int index) {
             x = index / (Constant.MAX_Y + 1);
             y = index % (Constant.MAX_Y + 1);
         }
 
         //设置点--通过坐标
-        public void setPoint(int posX, int posY) {
+        public void set(int posX, int posY) {
             x = posX;
             y = posY;
         }

@@ -24,7 +24,7 @@ namespace Tetris_New {
         public const int MIN_BLOCK_VALUE = 1;
         public const int MAX_BLOCK_VALUE = 6;
         public const int BLOCK_BOMB_CORE_VALUE = 5;
-        public const int BLOCK_BOMB_VALUE = 7;
+        public const int BLOCK_BOMB_OUT_VALUE = 7;
         public const int EXPLOSION_VALUE = 8;
 
         //数值到颜色的转换
@@ -57,12 +57,11 @@ namespace Tetris_New {
         public const int BLOCK_TYPE_SUPER_BOMB = 8;
         public const int BLOCK_TYPE_EXTENSION1 = 9;                     //方块形状（3x3方块，1~9）：1 5 9
         public const int BLOCK_TYPE_EXTENSION2 = 10;                   //4 5 6
-        public const int BLOCK_TYPE_EXTENSON3 = 11;                    //4 8
-        public const int BLOCK_TYPE_EXTENSION4 = 12;                   //2 4 6
+        public const int BLOCK_TYPE_EXTENSION3 = 11;                    //4 8
+        public const int BLOCK_TYPE_EXTENSION4 = 12;                   //1 3 5
         public const int BLOCK_TYPE_EXTENSION5 = 13;                   //4 5
-        public const int BLOCK_TYPE_EXTENSON6 = 14;                    //1 2 7 8
+        public const int BLOCK_TYPE_EXTENSION6 = 14;                    //1 2 7 8
         public const int BLOCK_TYPE_EXTENSION7 = 15;                   //1 2 8 9
-
-
+        
     }
 }

@@ -14,7 +14,7 @@ namespace Tetris_New {
 
         //构造函数
         public Block_Bomb() {
-            value = Constant.BLOCK_BOMB_VALUE;
+            value = Constant.BLOCK_BOMB_OUT_VALUE;
             //TODO: 修改值
             point0 = new Point(0, 5);
             type = Constant.BLOCK_TYPE_BOMB;
@@ -88,9 +88,6 @@ namespace Tetris_New {
         public override void copyFrom(Block b) {
             if (type != b.getType()) throw new Exception();
             point0.copyFrom(b.getPoint0());
-
-            state = b.getState();
-            value = b.getValue();
         }
     }
 }
