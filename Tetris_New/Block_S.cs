@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Tetris_New {
-    public class Block_T : Block {
+    public class Block_S:Block {
         Point point0;
         Point point1;
         Point point2;
@@ -16,13 +16,13 @@ namespace Tetris_New {
         int state;
 
         //构造函数
-        public Block_T() {
+        public Block_S() {
             value = new Random().Next(Constant.MIN_BLOCK_VALUE, Constant.MAX_BLOCK_VALUE + 1);
             point0 = new Point(0, 5);
-            point1 = new Point(1, 4);
-            point2 = new Point(1, 5);
-            point3 = new Point(1, 6);
-            type = Constant.BLOCK_TYPE_T;
+            point1 = new Point(0, 6);
+            point2 = new Point(1, 4);
+            point3 = new Point(1, 5);
+            type = Constant.BLOCK_TYPE_S;
             state = 0;
         }
 
@@ -48,51 +48,35 @@ namespace Tetris_New {
             Point[] points = {
                 new Point(),
                 new Point(),
-                new Point(),
-                new Point(),
+                new Point()
             };
+
             if (state == 0) {
-                points[0].set(point0.X, point0.Y - 1);
-                points[1].set(point0.X, point0.Y + 1);
+                points[0].set(point2.X + 1, point2.Y);
+                points[1].set(point0.X, point0.Y - 1);
                 points[2].set(point3.X + 1, point3.Y);
-                points[3].set(point2.X + 1, point2.Y);
-            } else if (state == 1) {
-                points[0].set(point0.X - 1, point0.Y);
-                points[1].set(point0.X + 1, point0.Y);
-                points[2].set(point3.X, point3.Y - 1);
-                points[3].set(point2.X, point2.Y - 1);
-            } else if (state == 2) {
-                points[0].set(point0.X, point0.Y - 1);
-                points[1].set(point0.X, point0.Y + 1);
-                points[2].set(point3.X - 1, point3.Y);
-                points[3].set(point2.X - 1, point2.Y);
-            } else {
-                points[0].set(point0.X + 1, point0.Y);
-                points[1].set(point0.X - 1, point0.Y);
-                points[2].set(point3.X, point3.Y + 1);
-                points[3].set(point2.X, point2.Y + 1);
+            }else {
+                points[0].set(point2.X, point2.Y - 1);
+                points[1].set(point1.X, point1.Y + 1);
+                points[2].set(point1.X, point1.Y + 2);
             }
 
-            return checkPoints(map, points, 4);
+            return checkPoints(map, points, 3);
         }
 
         //能否左移
         public override bool canMoveLeft(Map map) {
             Point[] points;
             int size = 0;
+
             if (state == 0) {
-                points = new Point[] { point0, point1 };
+                points = new Point[] { point0, point2 };
                 size = 2;
-            } else if (state == 1) {
-                points = new Point[] { point1, point2, point3 };
-                size = 3;
-            } else if (state == 2) {
-                points = new Point[] { point0, point3 };
-                size = 2;
-            } else {
+            }else {
                 points = new Point[] { point0, point1, point3 };
                 size = 3;
             }
+
             return checkPos(map, points, size, "left");
         }
 
@@ -100,19 +84,15 @@ namespace Tetris_New {
         public override bool canMoveRight(Map map) {
             Point[] points;
             int size = 0;
+
             if (state == 0) {
-                points = new Point[] { point0, point3 };
+                points = new Point[] { point1, point3 };
                 size = 2;
-            } else if (state == 1) {
-                points = new Point[] { point0, point1, point3 };
-                size = 3;
-            } else if (state == 2) {
-                points = new Point[] { point0, point1 };
-                size = 2;
-            } else {
-                points = new Point[] { point0, point1, point3 };
+            }else {
+                points = new Point[] { point1, point2, point3 };
                 size = 3;
             }
+
             return checkPos(map, points, size, "right");
         }
 
@@ -120,19 +100,15 @@ namespace Tetris_New {
         public override bool canMoveDown(Map map) {
             Point[] points;
             int size = 0;
+
             if (state == 0) {
                 points = new Point[] { point1, point2, point3 };
                 size = 3;
-            } else if (state == 1) {
-                points = new Point[] { point0, point3 };
-                size = 2;
-            } else if (state == 2) {
-                points = new Point[] { point0, point1, point3 };
-                size = 3;
-            } else {
-                points = new Point[] { point0, point1 };
+            }else {
+                points = new Point[] { point0, point2 };
                 size = 2;
             }
+
             return checkPos(map, points, size, "down");
         }
 
@@ -140,35 +116,19 @@ namespace Tetris_New {
         public override void update_RTT() {
             if (state == 0) {
                 ++point0.X;
-                ++point0.Y;
-                --point1.X;
-                ++point1.Y;
-                ++point3.X;
-                --point3.Y;
-            } else if (state == 1) {
-                ++point0.X;
                 --point0.Y;
-                ++point1.X;
-                ++point1.Y;
-                --point3.X;
-                --point3.Y;
-            } else if (state == 2) {
-                --point0.X;
-                --point0.Y;
-                ++point1.X;
-                --point1.Y;
-                --point3.X;
-                ++point3.Y;
+                point1.Y -= 2;
+                ++point2.X;
+                ++point2.Y;
             } else {
                 --point0.X;
                 ++point0.Y;
-                --point1.X;
-                --point1.Y;
-                ++point3.X;
-                ++point3.X;
+                point1.Y += 2;
+                --point2.X;
+                --point2.Y;
             }
 
-            state = (state + 1) % 4;                //更新状态
+            state = (state + 1) % 2;
         }
 
         //左移--更新点

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Tetris_New {
-    public class Block_I:Block {
+    public class Block_I : Block {
         Point point0;
         Point point1;
         Point point2;
@@ -44,92 +44,71 @@ namespace Tetris_New {
 
         //能否旋转
         public override bool canRotate(Map map) {
-            Point p1 = new Point(point0.X - 1, point0.Y);
-            Point p2 = new Point(point2.X + 1, point2.Y);
-            Point p3 = new Point(point3.X + 1, point3.Y);
-            Point p4 = new Point(point2.X + 2, point2.Y);
-            Point p5 = new Point(point3.X + 2, point3.Y);
-            Point nextP1 = new Point();
-            Point nextP2 = new Point();
-            Point nextP3 = new Point();
+            Point[] points = {
+                new Point(point0.X - 1, point0.Y),
+                new Point(point2.X + 1, point2.Y),
+                new Point(point3.X + 1, point3.Y),
+                new Point(point2.X + 2, point2.Y),
+                new Point(point3.X + 2, point3.Y),
+                new Point(),
+                new Point(),
+                new Point()
+            };
 
             if (state == 0) {
-                nextP1.setPoint(point1.X - 1, point1.Y);
-                nextP2.setPoint(point1.X + 1, point1.Y);
-                nextP3.setPoint(point1.X + 2, point1.Y);
+                points[5].set(point1.X - 1, point1.Y);
+                points[6].set(point1.X + 1, point1.Y);
+                points[7].set(point1.X + 2, point1.Y);
             } else {
-                nextP1.setPoint(point1.X, point1.Y - 1);
-                nextP2.setPoint(point1.X, point1.Y + 1);
-                nextP3.setPoint(point1.X, point1.Y + 2);
+                points[5].set(point1.X, point1.Y - 1);
+                points[6].set(point1.X, point1.Y + 1);
+                points[7].set(point1.X, point1.Y + 2);
             }
-
-            if (p1.isValid() && p2.isValid() && p3.isValid() && p4.isValid() && p5.isValid()
-                && nextP1.isValid() && nextP2.isValid() && nextP3.isValid()
-                && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0
-                && map.getValue(p4) == 0 && map.getValue(p5) == 0
-                && map.getValue(nextP1) == 0 && map.getValue(nextP2) == 0 && map.getValue(nextP3) == 0)
-                return true;
-            else return false;
+            
+            return checkPoints(map, points, 8);
         }
 
-        //能否左转
+        //能否左移
         public override bool canMoveLeft(Map map) {
-            if (state == 0) {
-                Point p1 = new Point(point0.X, point0.Y - 1);
-                if (p1.isValid() && map.getValue(p1) == 0) return true;
-                else return false;
-            } else {
-                Point p1 = new Point(point0.X, point0.Y - 1);
-                Point p2 = new Point(point1.X, point1.Y - 1);
-                Point p3 = new Point(point2.X, point2.Y - 1);
-                Point p4 = new Point(point3.X, point3.Y - 1);
+            Point[] points;
+            int size = 0;
 
-                if (p1.isValid() && p2.isValid() && p3.isValid() && p4.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0
-                    && map.getValue(p3) == 0 && map.getValue(p4) == 0)
-                    return true;
-                else return false;
+            if (state == 0) {
+                points = new Point[] { point0 };
+                size = 1;
+            } else {
+                points = new Point[] { point0, point1, point2, point3 };
+                size = 4;
             }
+            return checkPos(map, points, size, "left");
         }
 
         //能否右移
         public override bool canMoveRight(Map map) {
+            Point[] points;
+            int size = 0;
             if (state == 0) {
-                Point p1 = new Point(point3.X, point3.Y + 1);
-                if (p1.isValid() && map.getValue(p1) == 0) return true;
-                else return false;
-            }else {
-                Point p1 = new Point(point0.X, point0.Y + 1);
-                Point p2 = new Point(point1.X, point1.Y + 1);
-                Point p3 = new Point(point2.X, point2.Y + 1);
-                Point p4 = new Point(point3.X, point3.Y + 1);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid() && p4.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0
-                    && map.getValue(p3) == 0 && map.getValue(p4) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point3 };
+                size = 1;
+            } else {
+                points = new Point[] { point0, point1, point2, point3 };
+                size = 4;
             }
+            return checkPos(map, points, size, "right");
         }
 
         //能否下移
         public override bool canMoveDown(Map map) {
+            Point[] points;
+            int size = 0;
             if (state == 0) {
-                Point p1 = new Point(point0.X+1, point0.Y);
-                Point p2 = new Point(point1.X+1, point1.Y);
-                Point p3 = new Point(point2.X+1, point2.Y);
-                Point p4 = new Point(point3.X+1, point3.Y);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid() && p4.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0
-                    && map.getValue(p3) == 0 && map.getValue(p4) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1, point2, point3 };
+                size = 4;
             } else {
-                Point p1 = new Point(point3.X + 1, point3.Y);
-                if (p1.isValid() && map.getValue(p1) == 0) return true;
-                else return false;
+                points = new Point[] { point3 };
+                size = 1;
             }
+            return checkPos(map, points, size, "down");
         }
 
         //旋转--更新点和状态
@@ -141,7 +120,7 @@ namespace Tetris_New {
                 --point2.Y;
                 point3.X += 2;
                 point3.Y -= 2;
-            }else {
+            } else {
                 ++point0.X;
                 --point0.Y;
                 --point2.X;

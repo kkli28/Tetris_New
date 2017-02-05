@@ -23,6 +23,7 @@ namespace Tetris_New {
         public const int VALUE_NONE = 0;
         public const int MIN_BLOCK_VALUE = 1;
         public const int MAX_BLOCK_VALUE = 6;
+        public const int BLOCK_BOMB_CORE_VALUE = 5;
         public const int BLOCK_BOMB_VALUE = 7;
         public const int EXPLOSION_VALUE = 8;
 

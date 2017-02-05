@@ -18,8 +18,7 @@ namespace Tetris_New {
         //构造函数
         public Block_L() {
             value = new Random().Next(Constant.MIN_BLOCK_VALUE, Constant.MAX_BLOCK_VALUE + 1);
-
-            //TODO: 修改下面的值
+            
             point0 = new Point(0, 6);
             point1 = new Point(1, 4);
             point2 = new Point(1, 5);
@@ -47,158 +46,102 @@ namespace Tetris_New {
 
         //能否旋转
         public override bool canRotate(Map map) {
+            Point[] points = {
+                new Point(),
+                new Point(),
+                new Point(),
+                new Point()
+            };
+
             if (state == 0) {
-                Point p1 = new Point(point1.X - 1, point1.Y);
-                Point nextP1 = new Point(point2.X - 1, point2.Y);
-                Point nextP2 = new Point(point2.X + 1, point2.Y);
-                Point nextP3 = new Point(point3.X + 1, point3.Y);
-
-                if (p1.isValid() && nextP1.isValid() && nextP2.isValid() && nextP3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(nextP1) == 0 && map.getValue(nextP3) == 0)
-                    return true;
-                else return false;
+                points[0].set(point1.X - 1, point1.Y);
+                points[1].set(point2.X - 1, point2.Y);
+                points[2].set(point2.X + 1, point2.Y);
+                points[3].set(point3.X + 1, point3.Y);
             } else if (state == 1) {
-                Point p1 = new Point(point1.X, point1.Y + 1);
-                Point nextP1 = new Point(point2.X, point2.Y - 1);
-                Point nextP2 = new Point(point2.X, point2.Y + 1);
-                Point nextP3 = new Point(point3.X, point3.Y - 1);
-
-                if (p1.isValid() && nextP1.isValid() && nextP2.isValid() && nextP3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(nextP1) == 0 && map.getValue(nextP3) == 0)
-                    return true;
-                else return false;
+                points[0].set(point1.X, point1.Y + 1);
+                points[1].set(point2.X, point2.Y - 1);
+                points[2].set(point2.X, point2.Y + 1);
+                points[3].set(point3.X, point3.Y - 1);
             } else if (state == 2) {
-                Point p1 = new Point(point1.X + 1, point1.Y);
-                Point nextP1 = new Point(point3.X - 1, point3.Y);
-                Point nextP2 = new Point(point2.X - 1, point2.Y);
-                Point nextP3 = new Point(point2.X + 1, point2.Y);
-
-                if (p1.isValid() && nextP1.isValid() && nextP2.isValid() && nextP3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(nextP1) == 0 && map.getValue(nextP3) == 0)
-                    return true;
-                else return false;
+                points[0].set(point1.X + 1, point1.Y);
+                points[1].set(point3.X - 1, point3.Y);
+                points[2].set(point2.X - 1, point2.Y);
+                points[3].set(point2.X + 1, point2.Y);
             } else {
-                Point p1 = new Point(point1.X, point1.Y - 1);
-                Point nextP1 = new Point(point2.X, point2.Y - 1);
-                Point nextP2 = new Point(point2.X, point2.Y + 1);
-                Point nextP3 = new Point(point3.X, point3.Y + 1);
-
-                if (p1.isValid() && nextP1.isValid() && nextP2.isValid() && nextP3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(nextP1) == 0 && map.getValue(nextP3) == 0)
-                    return true;
-                else return false;
+                points[0].set(point1.X, point1.Y - 1);
+                points[1].set(point2.X, point2.Y - 1);
+                points[2].set(point2.X, point2.Y + 1);
+                points[3].set(point3.X, point3.Y + 1);
             }
+
+            return checkPoints(map, points, 4);
         }
 
         //能否左移
         public override bool canMoveLeft(Map map) {
+            Point[] points;
+            int size = 0;
+
             if (state == 0) {
-                Point p1 = new Point(point1.X, point1.Y - 1);
-                Point p2 = new Point(point0.X, point0.Y - 1);
-
-                if (p1.isValid() && p2.isValid() && map.getValue(p1) == 0 && map.getValue(p2) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1 };
+                size = 2;
             } else if (state == 1) {
-                Point p1 = new Point(point1.X, point1.Y - 1);
-                Point p2 = new Point(point2.X, point2.Y - 1);
-                Point p3 = new Point(point3.X, point3.Y - 1);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point1, point2, point3 };
+                size = 3;
             } else if (state == 2) {
-                Point p1 = new Point(point0.X, point0.Y - 1);
-                Point p2 = new Point(point3.X, point3.Y - 1);
-
-                if (p1.isValid() && p2.isValid() && map.getValue(p1) == 0 && map.getValue(p2) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point3 };
+                size = 2;
             } else {
-                Point p1 = new Point(point0.X, point0.Y - 1);
-                Point p2 = new Point(point2.X, point2.Y - 1);
-                Point p3 = new Point(point1.X, point1.Y - 1);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1, point2 };
+                size = 3;
             }
+
+            return checkPos(map, points, size, "left");
         }
 
         //能否右移
         public override bool canMoveRight(Map map) {
+            Point[] points;
+            int size = 0;
+
             if (state == 0) {
-                Point p1 = new Point(point0.X, point0.Y + 1);
-                Point p2 = new Point(point3.X, point3.Y + 1);
-
-                if (p1.isValid() && p2.isValid() && map.getValue(p1) == 0 && map.getValue(p2) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point3 };
+                size = 2;
             } else if (state == 1) {
-                Point p1 = new Point(point1.X, point1.Y + 1);
-                Point p2 = new Point(point2.X, point2.Y + 1);
-                Point p3 = new Point(point0.X, point0.Y + 1);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1, point2 };
+                size = 3;
             } else if (state == 2) {
-                Point p1 = new Point(point1.X, point1.Y + 1);
-                Point p2 = new Point(point0.X, point0.Y + 1);
-
-                if (p1.isValid() && p2.isValid() && map.getValue(p1) == 0 && map.getValue(p2) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1 };
+                size = 2;
             } else {
-                Point p1 = new Point(point3.X, point3.Y + 1);
-                Point p2 = new Point(point2.X, point2.Y + 1);
-                Point p3 = new Point(point1.X, point1.Y + 1);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point1, point2, point3 };
+                size = 3;
             }
+
+            return checkPos(map, points, size, "right");
         }
 
         //能否下移
         public override bool canMoveDown(Map map) {
+            Point[] points;
+            int size = 0;
+
             if (state == 0) {
-                Point p1 = new Point(point1.X + 1, point1.Y);
-                Point p2 = new Point(point2.X + 1, point2.Y);
-                Point p3 = new Point(point3.X + 1, point3.Y);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point1, point2, point3 };
+                size = 3;
             } else if (state == 1) {
-                Point p1 = new Point(point3.X + 1, point3.Y);
-                Point p2 = new Point(point0.X + 1, point0.Y);
-
-                if (p1.isValid() && p2.isValid() && map.getValue(p1) == 0 && map.getValue(p2) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point3 };
+                size = 2;
             } else if (state == 2) {
-                Point p1 = new Point(point0.X + 1, point0.Y);
-                Point p2 = new Point(point2.X + 1, point2.Y);
-                Point p3 = new Point(point1.X + 1, point1.Y);
-
-                if (p1.isValid() && p2.isValid() && p3.isValid()
-                    && map.getValue(p1) == 0 && map.getValue(p2) == 0 && map.getValue(p3) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1, point2 };
+                size = 3;
             } else {
-                Point p1 = new Point(point0.X + 1, point0.Y);
-                Point p2 = new Point(point1.X + 1, point1.Y);
-
-                if (p1.isValid() && p2.isValid() && map.getValue(p1) == 0 && map.getValue(p2) == 0)
-                    return true;
-                else return false;
+                points = new Point[] { point0, point1 };
+                size = 2;
             }
+
+            return checkPos(map, points, size, "down");
         }
 
         //旋转--更新点
