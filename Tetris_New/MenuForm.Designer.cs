@@ -70,7 +70,7 @@
             this.button40 = new System.Windows.Forms.Button();
             this.button41 = new System.Windows.Forms.Button();
             this.button42 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tetrisLB = new System.Windows.Forms.Label();
             this.button43 = new System.Windows.Forms.Button();
             this.customBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -154,12 +154,13 @@
             this.fireBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fireBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.fireBtn.ForeColor = System.Drawing.Color.Silver;
-            this.fireBtn.Location = new System.Drawing.Point(324, 393);
+            this.fireBtn.Location = new System.Drawing.Point(324, 343);
             this.fireBtn.Name = "fireBtn";
             this.fireBtn.Size = new System.Drawing.Size(128, 36);
             this.fireBtn.TabIndex = 5;
             this.fireBtn.Text = "无限火力";
             this.fireBtn.UseVisualStyleBackColor = false;
+            this.fireBtn.Click += new System.EventHandler(this.fireBtn_Click);
             this.fireBtn.MouseEnter += new System.EventHandler(this.helpBtn_MouseEnter);
             this.fireBtn.MouseLeave += new System.EventHandler(this.helpBtn_MouseLeave);
             // 
@@ -710,16 +711,16 @@
             this.button42.TabIndex = 51;
             this.button42.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // tetrisLB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(41, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 28);
-            this.label1.TabIndex = 52;
-            this.label1.Text = "Tetris";
+            this.tetrisLB.AutoSize = true;
+            this.tetrisLB.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.tetrisLB.ForeColor = System.Drawing.Color.Lime;
+            this.tetrisLB.Location = new System.Drawing.Point(41, 22);
+            this.tetrisLB.Name = "tetrisLB";
+            this.tetrisLB.Size = new System.Drawing.Size(71, 28);
+            this.tetrisLB.TabIndex = 52;
+            this.tetrisLB.Text = "Tetris";
             // 
             // button43
             // 
@@ -742,7 +743,7 @@
             this.customBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.customBtn.ForeColor = System.Drawing.Color.Silver;
-            this.customBtn.Location = new System.Drawing.Point(324, 343);
+            this.customBtn.Location = new System.Drawing.Point(324, 393);
             this.customBtn.Name = "customBtn";
             this.customBtn.Size = new System.Drawing.Size(128, 36);
             this.customBtn.TabIndex = 54;
@@ -760,7 +761,7 @@
             this.ClientSize = new System.Drawing.Size(464, 441);
             this.Controls.Add(this.customBtn);
             this.Controls.Add(this.button43);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tetrisLB);
             this.Controls.Add(this.button42);
             this.Controls.Add(this.button37);
             this.Controls.Add(this.button39);
@@ -870,7 +871,7 @@
         private System.Windows.Forms.Button button40;
         private System.Windows.Forms.Button button41;
         private System.Windows.Forms.Button button42;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tetrisLB;
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button customBtn;
     }

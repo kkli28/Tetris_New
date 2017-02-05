@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.button0 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -340,10 +341,18 @@
             this.button295 = new System.Windows.Forms.Button();
             this.button296 = new System.Windows.Forms.Button();
             this.button297 = new System.Windows.Forms.Button();
-            this.button298 = new System.Windows.Forms.Button();
+            this.startBtn = new System.Windows.Forms.Button();
             this.button299 = new System.Windows.Forms.Button();
             this.gameModeLB = new System.Windows.Forms.Label();
             this.boundaryAccLB = new System.Windows.Forms.Label();
+            this.button298 = new System.Windows.Forms.Button();
+            this.bombLB = new System.Windows.Forms.Label();
+            this.button300 = new System.Windows.Forms.Button();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.bombTimer = new System.Windows.Forms.Timer(this.components);
+            this.recordLB = new System.Windows.Forms.Label();
+            this.scoreLB = new System.Windows.Forms.Label();
+            this.blockTypeLB = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button0
@@ -4448,22 +4457,22 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label2.ForeColor = System.Drawing.Color.Blue;
             this.label2.Location = new System.Drawing.Point(351, 178);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 21);
+            this.label2.Size = new System.Drawing.Size(42, 19);
             this.label2.TabIndex = 431;
             this.label2.Text = "记录: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.Blue;
             this.label3.Location = new System.Drawing.Point(351, 215);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 21);
+            this.label3.Size = new System.Drawing.Size(42, 19);
             this.label3.TabIndex = 432;
             this.label3.Text = "得分: ";
             // 
@@ -4757,7 +4766,7 @@
             this.button296.ForeColor = System.Drawing.Color.Black;
             this.button296.Location = new System.Drawing.Point(345, 166);
             this.button296.Name = "button296";
-            this.button296.Size = new System.Drawing.Size(4, 240);
+            this.button296.Size = new System.Drawing.Size(4, 216);
             this.button296.TabIndex = 453;
             this.button296.UseVisualStyleBackColor = false;
             // 
@@ -4775,21 +4784,21 @@
             this.button297.TabIndex = 454;
             this.button297.UseVisualStyleBackColor = false;
             // 
-            // button298
+            // startBtn
             // 
-            this.button298.BackColor = System.Drawing.Color.White;
-            this.button298.Enabled = false;
-            this.button298.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
-            this.button298.FlatAppearance.BorderSize = 2;
-            this.button298.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button298.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.button298.ForeColor = System.Drawing.Color.Blue;
-            this.button298.Location = new System.Drawing.Point(345, 589);
-            this.button298.Name = "button298";
-            this.button298.Size = new System.Drawing.Size(72, 36);
-            this.button298.TabIndex = 455;
-            this.button298.Text = "开始";
-            this.button298.UseVisualStyleBackColor = false;
+            this.startBtn.BackColor = System.Drawing.Color.White;
+            this.startBtn.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.startBtn.FlatAppearance.BorderSize = 2;
+            this.startBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.startBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.startBtn.ForeColor = System.Drawing.Color.Blue;
+            this.startBtn.Location = new System.Drawing.Point(345, 589);
+            this.startBtn.Name = "startBtn";
+            this.startBtn.Size = new System.Drawing.Size(72, 36);
+            this.startBtn.TabIndex = 455;
+            this.startBtn.Text = "开始";
+            this.startBtn.UseVisualStyleBackColor = false;
+            this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
             // button299
             // 
@@ -4801,7 +4810,7 @@
             this.button299.ForeColor = System.Drawing.Color.Black;
             this.button299.Location = new System.Drawing.Point(349, 248);
             this.button299.Name = "button299";
-            this.button299.Size = new System.Drawing.Size(107, 4);
+            this.button299.Size = new System.Drawing.Size(103, 4);
             this.button299.TabIndex = 456;
             this.button299.UseVisualStyleBackColor = false;
             // 
@@ -4821,11 +4830,91 @@
             this.boundaryAccLB.AutoSize = true;
             this.boundaryAccLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.boundaryAccLB.ForeColor = System.Drawing.Color.Blue;
-            this.boundaryAccLB.Location = new System.Drawing.Point(351, 305);
+            this.boundaryAccLB.Location = new System.Drawing.Point(351, 306);
             this.boundaryAccLB.Name = "boundaryAccLB";
             this.boundaryAccLB.Size = new System.Drawing.Size(74, 19);
             this.boundaryAccLB.TabIndex = 458;
             this.boundaryAccLB.Text = "不跨越边界";
+            // 
+            // button298
+            // 
+            this.button298.BackColor = System.Drawing.Color.Silver;
+            this.button298.Enabled = false;
+            this.button298.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button298.FlatAppearance.BorderSize = 0;
+            this.button298.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button298.ForeColor = System.Drawing.Color.Black;
+            this.button298.Location = new System.Drawing.Point(349, 378);
+            this.button298.Name = "button298";
+            this.button298.Size = new System.Drawing.Size(107, 4);
+            this.button298.TabIndex = 459;
+            this.button298.UseVisualStyleBackColor = false;
+            // 
+            // bombLB
+            // 
+            this.bombLB.AutoSize = true;
+            this.bombLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.bombLB.ForeColor = System.Drawing.Color.Blue;
+            this.bombLB.Location = new System.Drawing.Point(351, 341);
+            this.bombLB.Name = "bombLB";
+            this.bombLB.Size = new System.Drawing.Size(74, 19);
+            this.bombLB.TabIndex = 460;
+            this.bombLB.Text = "不启用炸弹";
+            // 
+            // button300
+            // 
+            this.button300.BackColor = System.Drawing.Color.Silver;
+            this.button300.Enabled = false;
+            this.button300.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button300.FlatAppearance.BorderSize = 0;
+            this.button300.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button300.ForeColor = System.Drawing.Color.Black;
+            this.button300.Location = new System.Drawing.Point(452, 162);
+            this.button300.Name = "button300";
+            this.button300.Size = new System.Drawing.Size(4, 216);
+            this.button300.TabIndex = 461;
+            this.button300.UseVisualStyleBackColor = false;
+            // 
+            // mainTimer
+            // 
+            this.mainTimer.Interval = 200;
+            // 
+            // bombTimer
+            // 
+            this.bombTimer.Interval = 200;
+            // 
+            // recordLB
+            // 
+            this.recordLB.AutoSize = true;
+            this.recordLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.recordLB.ForeColor = System.Drawing.Color.Red;
+            this.recordLB.Location = new System.Drawing.Point(399, 178);
+            this.recordLB.Name = "recordLB";
+            this.recordLB.Size = new System.Drawing.Size(17, 19);
+            this.recordLB.TabIndex = 462;
+            this.recordLB.Text = "0";
+            // 
+            // scoreLB
+            // 
+            this.scoreLB.AutoSize = true;
+            this.scoreLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.scoreLB.ForeColor = System.Drawing.Color.Red;
+            this.scoreLB.Location = new System.Drawing.Point(399, 215);
+            this.scoreLB.Name = "scoreLB";
+            this.scoreLB.Size = new System.Drawing.Size(17, 19);
+            this.scoreLB.TabIndex = 463;
+            this.scoreLB.Text = "0";
+            // 
+            // blockTypeLB
+            // 
+            this.blockTypeLB.AutoSize = true;
+            this.blockTypeLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.blockTypeLB.ForeColor = System.Drawing.Color.Blue;
+            this.blockTypeLB.Location = new System.Drawing.Point(351, 400);
+            this.blockTypeLB.Name = "blockTypeLB";
+            this.blockTypeLB.Size = new System.Drawing.Size(61, 19);
+            this.blockTypeLB.TabIndex = 464;
+            this.blockTypeLB.Text = "方块类型";
             // 
             // GameForm
             // 
@@ -4833,10 +4922,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(496, 681);
+            this.Controls.Add(this.blockTypeLB);
+            this.Controls.Add(this.scoreLB);
+            this.Controls.Add(this.recordLB);
+            this.Controls.Add(this.button300);
+            this.Controls.Add(this.bombLB);
+            this.Controls.Add(this.button298);
             this.Controls.Add(this.boundaryAccLB);
             this.Controls.Add(this.gameModeLB);
             this.Controls.Add(this.button299);
-            this.Controls.Add(this.button298);
+            this.Controls.Add(this.startBtn);
             this.Controls.Add(this.button297);
             this.Controls.Add(this.button296);
             this.Controls.Add(this.button295);
@@ -5486,9 +5581,17 @@
         private System.Windows.Forms.Button button295;
         private System.Windows.Forms.Button button296;
         private System.Windows.Forms.Button button297;
-        private System.Windows.Forms.Button button298;
+        private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Button button299;
         private System.Windows.Forms.Label gameModeLB;
         private System.Windows.Forms.Label boundaryAccLB;
+        private System.Windows.Forms.Button button298;
+        private System.Windows.Forms.Label bombLB;
+        private System.Windows.Forms.Button button300;
+        private System.Windows.Forms.Timer mainTimer;
+        private System.Windows.Forms.Timer bombTimer;
+        private System.Windows.Forms.Label recordLB;
+        private System.Windows.Forms.Label scoreLB;
+        private System.Windows.Forms.Label blockTypeLB;
     }
 }

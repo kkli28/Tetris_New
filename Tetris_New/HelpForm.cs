@@ -17,5 +17,15 @@ namespace Tetris_New {
         private void HelpForm_Load(object sender, EventArgs e) {
 
         }
+
+        private void label3_MouseEnter(object sender, EventArgs e) {
+            Label label = (Label)sender;
+            label.ForeColor = Color.Blue;
+        }
+
+        private void label3_MouseLeave(object sender, EventArgs e) {
+            Label label = (Label)sender;
+            label.ForeColor = Color.FromArgb(224,224,224);
+        }
     }
 }

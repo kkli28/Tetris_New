@@ -19,7 +19,7 @@ namespace Tetris_New {
         }
 
         private void classicBtn_Click(object sender, EventArgs e) {
-            GameForm gf = new GameForm(Constant.CLASSIC_MODE,false,false);
+            GameForm gf = new GameForm(Constant.CLASSIC_MODE,false,false,-1,null);
             gf.ShowDialog();
         }
 
@@ -67,7 +67,16 @@ namespace Tetris_New {
         }
 
         private void customBtn_Click(object sender, EventArgs e) {
-            //自定义模式窗体
+            CostomForm cf = new CostomForm();
+            cf.Show();
+            this.Hide();
         }
+
+        private void fireBtn_Click(object sender, EventArgs e) {
+            GameForm gf = new GameForm(Constant.FIRE_MODE, true, true, -1, null);
+            gf.Show();
+            this.Hide();
+        }
+        
     }
 }

@@ -38,6 +38,13 @@ namespace Tetris_New {
             return true;
         }
 
+        //设置值--通过索引
+        public void setValue(int index,int value) {
+            if (validIndex(index) && validValue(value)) {
+                map[index / (Constant.MAX_Y + 1), index % (Constant.MAX_Y + 1)] = value;
+            } else throw new Exception();
+        }
+
         //设置值--通过坐标
         public void setValue(int x, int y, int value) {
             if (validX(x) && validY(y) && validValue(value))

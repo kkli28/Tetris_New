@@ -77,7 +77,7 @@ namespace Tetris_New {
         private void startBtn_Click(object sender, EventArgs e) {
             startBtnClick = true;
 
-            GameForm gf = new GameForm(Constant.CHALLENGE_MODE, boundaryAcc, haveBomb,pbIndex); //关卡信息
+            GameForm gf = new GameForm(Constant.CHALLENGE_MODE, boundaryAcc, haveBomb,pbIndex,null); //关卡信息
             gf.Show();
             this.Close();
         }

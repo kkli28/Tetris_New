@@ -102,6 +102,9 @@
     <EmbeddedResource Include="ChooseHurdleForm.resx">
       <DependentUpon>ChooseHurdleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CostomForm.resx">
+      <DependentUpon>CostomForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>
