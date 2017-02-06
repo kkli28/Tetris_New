@@ -14,7 +14,7 @@ namespace Tetris_New {
         bool selectPB;            //是否选择了一个PictureBox
 
         bool startBtnClick;                 //开始按钮是否按下。当界面关闭时，如果按下则不回到菜单界面
-        bool boundaryAcc;                //边界跨越
+        bool haveExtra;                     //是否启用扩展方块
         bool haveBomb;                    //是否有炸弹
 
         public ChooseHurdleForm() {
@@ -26,7 +26,7 @@ namespace Tetris_New {
             pbIndex = -1;
             selectPB = false;
             startBtnClick = false;
-            boundaryAcc = Constant.NO_BOUNDARY_ACC;
+            haveExtra = Constant.NO_EXTRA;
             
         }
         
@@ -77,7 +77,7 @@ namespace Tetris_New {
         private void startBtn_Click(object sender, EventArgs e) {
             startBtnClick = true;
 
-            GameForm gf = new GameForm(Constant.CHALLENGE_MODE, boundaryAcc, haveBomb,pbIndex,null); //关卡信息
+            GameForm gf = new GameForm(Constant.CHALLENGE_MODE, haveExtra, haveBomb,pbIndex,null); //关卡信息
             gf.Show();
             this.Close();
         }
@@ -85,10 +85,10 @@ namespace Tetris_New {
         private void boundaryAccCB_SelectedIndexChanged(object sender, EventArgs e) {
             switch (boundaryAccCB.SelectedIndex) {
                 case 0:
-                    boundaryAcc = Constant.NO_BOUNDARY_ACC;
+                    haveExtra = Constant.NO_EXTRA;
                     break;
                 default:
-                    boundaryAcc = Constant.BOUNDARY_ACC;
+                    haveExtra = Constant.HAVE_EXTRA;
                     break;
             }
             

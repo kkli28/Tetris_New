@@ -16,12 +16,12 @@ namespace Tetris_New {
             for (int i = Constant.MIN_X; i <= Constant.MAX_X; i++)
                 for (int j = Constant.MIN_Y; j <= Constant.MAX_Y; j++)
                     map[i, j] = 0;
-            minX = Constant.MAX_X;
-            minUnchangeX = Constant.MAX_X;
+            minX = Constant.MAX_X+1;
+            minUnchangeX = Constant.MAX_X+1;
         }
 
         //重置图
-        public void resetMap() {
+        public void reset() {
             minX = Constant.MAX_X + 1;
             minUnchangeX = Constant.MAX_X + 1;
             for (int i = Constant.MIN_X; i <= Constant.MAX_X; i++)
@@ -139,18 +139,12 @@ namespace Tetris_New {
         //消除全不为0的行，并将上面的所有行下移，out参数标志消除的行数
         public void eliminate(Block block, out int count) {
             count = 0;
-            
-            //普通炸弹
-            if (block.getType() == Constant.BLOCK_TYPE_BOMB) {
-                smallExplosion(block.getPoint0());
-            }
-            
-            //超级炸弹 
-            else if (block.getType() == Constant.BLOCK_TYPE_SUPER_BOMB) {
-                bigExplosion(block.getPoint4());
-            } 
-            
 
+            //普通炸弹
+            if (block.getType() == Constant.BLOCK_TYPE_BOMB) explosion(block.getPoint0(), Constant.BLOCK_TYPE_BOMB);
+            //超级炸弹 
+            else if (block.getType() == Constant.BLOCK_TYPE_SUPER_BOMB) explosion(block.getPoint4(), Constant.BLOCK_TYPE_SUPER_BOMB);
+            
             //TODO: 更新minX和minUnchangeX
             //普通方块
             else {
@@ -172,38 +166,33 @@ namespace Tetris_New {
             }
         }
         
-        //以点p为中心，小型爆炸
-        public void smallExplosion(Point p) {
-            int begIndex = (p.X - 2) * (Constant.MAX_Y + 1) + (p.Y - 2);
-            for (int i = 0; i < 5; ++i) {
-                resetValue(begIndex, begIndex + 4);
-                begIndex += Constant.MAX_Y + 1;
-            }
-            minUnchangeX = p.X + 3;                 //没有变的行为爆炸下方的第3行（前2行在爆炸范围内）
-        }
+        //爆炸
+        public void explosion(Point p,int type) {
+            int addV = 0;
+            if (type == Constant.BLOCK_TYPE_BOMB) {
+                addV = 1;
+            } else if (type == Constant.BLOCK_TYPE_SUPER_BOMB) {
+                addV = 3;
+            } else throw new Exception();
 
-        //以点p为中心，大型爆炸
-        public void bigExplosion(Point p) {
-            int begIndex = (p.X - 4) * (Constant.MAX_Y + 1) + (p.Y - 4);
-            for(int i = 0; i < 9; ++i) {
-                resetValue(begIndex, begIndex + 8);
-                begIndex += Constant.MAX_Y + 1;
-            }
-            minUnchangeX = p.X + 5;                 //没有变的行为爆炸下方的第5行（前4行在爆炸范围内）
-        }
+            int begX = p.X - addV;
+            int endX = p.X + addV;
+            int begY = p.Y - addV;
+            int endY = p.Y + addV;
+            if (begX < 0) begX = 0;
+            if (endX > Constant.MAX_X) endX = Constant.MAX_X;
+            if (begY < 0) begY = 0;
+            if (endY > Constant.MAX_Y) endY = Constant.MAX_Y;
 
-        //清除索引从index1到index2的位置的值
-        public void resetValue(int index1,int index2) {
-            int x = 0;
-            int y = 0;
-            for(int index = index1; index <= index2; ++index) {
-                if (!validIndex(index)) continue;                   //索引不合法就跳过
-                x = index / (Constant.MAX_Y + 1);
-                y = index % (Constant.MAX_Y + 1);
-                map[x, y] = Constant.VALUE_NONE;
+            for (int i = begX; i <= endX; ++i) {
+                for (int j = begY; j <= endY; ++j)
+                    map[i, j] = 0;
             }
+            minUnchangeX = p.X + addV + 1;
+            if (minUnchangeX < 0) minUnchangeX = 0;
+            if (minUnchangeX > Constant.MAX_X+1) minUnchangeX = Constant.MAX_X+1;
         }
-
+        
         //index行的所有上方行下移
         public void moveLines(int index) {
             if (!validIndex(index)) throw new Exception();
@@ -220,6 +209,8 @@ namespace Tetris_New {
 
             //更新minX
             ++minX;
+            if (minX < 0) minX = 0;
+            else if (minX > Constant.MAX_X) minX = Constant.MAX_X;
         }
     }
 }

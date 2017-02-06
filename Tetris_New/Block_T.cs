@@ -165,7 +165,7 @@ namespace Tetris_New {
                 --point1.X;
                 --point1.Y;
                 ++point3.X;
-                ++point3.X;
+                ++point3.Y;
             }
 
             state = (state + 1) % 4;                //更新状态

@@ -48,10 +48,10 @@ namespace Tetris_New {
 
             if (state == 0) {
                 points[0].set(point0.X, point0.Y + 1);
-                points[0].set(point0.X + 1, point0.Y);
+                points[1].set(point0.X + 1, point0.Y);
             } else {
                 points[0].set(point0.X, point0.Y - 1);
-                points[0].set(point0.X + 1, point0.Y);
+                points[1].set(point0.X + 1, point0.Y);
             }
 
             return checkPoints(map, points, 2);

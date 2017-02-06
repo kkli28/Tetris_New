@@ -16,7 +16,7 @@ namespace Tetris_New {
         int score;                             //得分
         int record;                           //记录
         int time;                               //游戏时间
-        bool bdAcc;                         //边界跨越选项
+        bool haveExtra;                   //是否启用扩展方块
         bool haveBomb;                  //是否有炸弹
         int hurdle;                            //关卡
         int[] blockArray;                   //自定义模式中的残留方块位置
@@ -31,15 +31,17 @@ namespace Tetris_New {
 
         string[] records;                   //文件中的记录数组
 
+        bool eatSuperBomb;           //产生的所有超级炸弹中，只有奇数序或偶数序的超级炸弹出现，其余的都被我吃掉了，wa ha ha
+        
         //构造函数--需要参数：游戏模式、是否跨越边界、是否有炸弹、第几关
-        public GameForm(int mode, bool boundA, bool haveB, int hurd, int[] stt) {
+        public GameForm(int mode, bool extra, bool haveB, int hurd, int[] stt) {
             InitializeComponent();
-
+            
             random = new Random();
             score = 0;
             record = 0;
             gameMode = mode;
-            bdAcc = boundA;
+            haveExtra = extra;
             haveBomb = haveB;
             hurdle = hurd;
             time = 0;
@@ -52,13 +54,16 @@ namespace Tetris_New {
             records = new string[3] { "0", "0", "0" };
 
             //显示游戏记录
-            try {
-                records = File.ReadAllLines("record.txt");
-                record = Int32.Parse(records[gameMode]);
-                recordLB.Text = records[gameMode];
-            } catch (Exception e) {
-                File.WriteAllLines("record.txt", new string[3] { "0", "0", "0" });
-                MessageBox.Show("记录文件损坏，已重置记录！");
+            if (gameMode != Constant.CUSTOM_MODE) {
+                try {
+                    records = File.ReadAllLines("record.txt");
+                    record = Int32.Parse(records[gameMode]);
+                    recordLB.Text = records[gameMode];
+                } catch (Exception e) {
+                    File.WriteAllLines("record.txt", new string[3] { "0", "0", "0" });
+                    MessageBox.Show("记录文件损坏，已重置记录！");
+                    MessageBox.Show(e.Message);
+                }
             }
 
             //使用前必须保证已初始化
@@ -74,16 +79,37 @@ namespace Tetris_New {
             }
 
             //显示游戏模式、跨越边界、是否有炸弹的标签
-            gameModeLB.Text = gameMode.ToString();
-            boundaryAccLB.Text = bdAcc.ToString();
-            bombLB.Text = haveBomb.ToString();
+            string str = "";
+            switch (gameMode) {
+                case Constant.CLASSIC_MODE: str = "经典模式";break;
+                case Constant.CHALLENGE_MODE: str = "挑战模式";break;
+                case Constant.FIRE_MODE: str = "无限火力模式"; break;
+                case Constant.CUSTOM_MODE: str = "自定义模式";break;
+                default: throw new Exception();
+            }
+            gameModeLB.Text = str;
+            
+            switch (haveExtra) {
+                case Constant.NO_EXTRA: str = "不启用扩展方块";break;
+                case Constant.HAVE_EXTRA: str = "启用扩展方块";break;
+                default: throw new Exception();
+            }
+            extraBlcokLB.Text = str;
+
+            switch (haveBomb) {
+                case Constant.HAVE_BOMB: str = "启用炸弹";break;
+                case Constant.NO_BOMB: str = "不启用炸弹";break;
+                default: throw new Exception();
+            }
+            bombLB.Text = str;
 
             initBlocks();                   //加载方块
         }
-
+        
         //开始游戏
         public void startGame() {
             resetBtns();
+            map.reset();
             initBlocks();
             inGame = true;
             block1 = getBlock();
@@ -92,6 +118,8 @@ namespace Tetris_New {
             time = 0;
             score = 0;
             scoreLB.Text = "0";
+
+            eatSuperBomb = true;
 
             //避免两个方块颜色相同，置第二个方块颜色为前一个方块颜色的下一个颜色
             int val = block1.getValue() + 1;
@@ -102,7 +130,7 @@ namespace Tetris_New {
             showNextBlock(block2);
 
             //重置游戏难度计时器
-            mainTimer.Interval = Constant.DEFAULT_INTERVAL;
+            //mainTimer.Interval = Constant.DEFAULT_INTERVAL;
 
             mainTimer.Start();
         }
@@ -110,38 +138,34 @@ namespace Tetris_New {
         //显示方块
         public void showBlock(Block b) {
             int bc = Constant.getBlockCount(b.getType());
+            int value = b.getValue();
 
             int type = b.getType();
-            blockTypeLB.Text = type.ToString();
 
             int index = -1;
             Point p = b.getPoint0();
             index = p.X * (Constant.MAX_Y + 1) + p.Y;
-            setBtnBC(index, Constant.valueToColor(b.getValue()));
-            blockTypeLB.Text = blockTypeLB.Text + "\n" + p.X+" "+p.Y;
+            setBtnBC(index, Constant.valueToColor(value));
 
             //有第二个方块
             if (bc >= 2) {
                 p = b.getPoint1();
                 index = p.X * (Constant.MAX_Y + 1) + p.Y;
-                setBtnBC(index, Constant.valueToColor(b.getValue()));
-                blockTypeLB.Text = blockTypeLB.Text + "\n" + p.X + " " + p.Y;
+                setBtnBC(index, Constant.valueToColor(value));
             }
 
             //有第三个方块
             if (bc>=3) {
                 p = b.getPoint2();
                 index = p.X * (Constant.MAX_Y + 1) + p.Y;
-                setBtnBC(index, Constant.valueToColor(b.getValue()));
-                blockTypeLB.Text = blockTypeLB.Text + "\n" + p.X + " " + p.Y;
+                setBtnBC(index, Constant.valueToColor(value));
             }
 
             //有第四个方块
             if (bc>=4) {
                 p = b.getPoint3();
                 index = p.X * (Constant.MAX_Y + 1) + p.Y;
-                setBtnBC(index, Constant.valueToColor(b.getValue()));
-                blockTypeLB.Text = blockTypeLB.Text + "\n" + p.X + " " + p.Y;
+                setBtnBC(index, Constant.valueToColor(value));
             } 
             
             //超级炸弹，有第五个方块
@@ -149,7 +173,6 @@ namespace Tetris_New {
                 p = b.getPoint4();
                 index = p.X * (Constant.MAX_Y + 1) + p.Y;
                 setBtnBC(index, Constant.BOMB_CORE_COLOR);
-                blockTypeLB.Text = blockTypeLB.Text + "\n" + p.X + " " + p.Y;
             }
         }
         
@@ -215,15 +238,70 @@ namespace Tetris_New {
 
         //获得方块
         public Block getBlock() {
+
+            //经典模式
             if (gameMode == Constant.CLASSIC_MODE) {
                 return Constant.getBlock(random.Next(0, Constant.MAX_CLASSIC_BLOCK_TYPE + 1));
-            } else if (gameMode == Constant.FIRE_MODE) {
-                return Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 2));          //小炸弹当做普通方块产生
-            } else {
-                return Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 1));          //不产生炸弹
+            } 
+            
+            //无限火力模式
+            else if (gameMode == Constant.FIRE_MODE) {
+                Block b=Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 3));
+                if (b.getType() == Constant.BLOCK_TYPE_SUPER_BOMB) {
+                    if (eatSuperBomb) {
+                        eatSuperBomb = false;
+                        b = Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 3));
+                    } else eatSuperBomb = true;
+                }
+                return b;
+            }
+            
+            //挑战模式或自定义模式
+            else {
+                //启用扩展方块，启用炸弹
+                if (haveExtra && haveBomb) {
+                    Block b = Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 3));
+                    if (b.getType() == Constant.BLOCK_TYPE_SUPER_BOMB) {
+                        if (eatSuperBomb) {
+                            eatSuperBomb = false;
+                            b = Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 3));
+                        } else eatSuperBomb = true;
+                    }
+                    return b;
+                } 
+                
+                //只启用扩展方块
+                else if (haveExtra) {
+                    return Constant.getBlock(random.Next(0, Constant.MAX_NO_BOMB_BLOCK_TYPE + 1));
+                } 
+                
+                //只启用炸弹
+                else if (haveBomb) {
+                    int value = random.Next(0, Constant.MAX_CLASSIC_BLOCK_TYPE + 3);
+                    if (value > Constant.MAX_CLASSIC_BLOCK_TYPE) {
+                        if (value == Constant.MAX_CLASSIC_BLOCK_TYPE + 1) value = Constant.BLOCK_TYPE_BOMB;
+                        else {
+                            if (eatSuperBomb) {
+                                eatSuperBomb = false;
+                                value = random.Next(0, Constant.MAX_CLASSIC_BLOCK_TYPE + 3);
+                                if (value == Constant.MAX_CLASSIC_BLOCK_TYPE + 1) value = Constant.BLOCK_TYPE_BOMB;
+                                else value = Constant.BLOCK_TYPE_SUPER_BOMB;
+                            }else {
+                                eatSuperBomb = true;
+                                value = Constant.BLOCK_TYPE_SUPER_BOMB;
+                            }
+                        }
+                    }
+                    return Constant.getBlock(value);
+                }
+                
+                //只有经典方块（不启用扩展方块，不启用炸弹）
+                else {
+                    return Constant.getBlock(random.Next(0, Constant.MAX_CLASSIC_BLOCK_TYPE + 1));
+                }
             }
         }
-        
+
         private void GameForm_Load(object sender, EventArgs e) {
 
         }
@@ -335,13 +413,66 @@ namespace Tetris_New {
         //刷新地图
         public void refreshBtns() {
             int[,] array = map.getMap();
-            int minX = map.getMinX();
-            int minUnchangeX = map.getMinUnchangeX();
+            int minX = map.getMinX() - 1;
+            int minUnchangeX = map.getMinUnchangeX()+1;
+            if (minX < 0) minX = 0;
+            else if (minX > Constant.MAX_X) minX = Constant.MAX_X;
+            if (minUnchangeX < 0) minUnchangeX = 0;
+            else if (minUnchangeX > Constant.MAX_Y+1) minUnchangeX = Constant.MAX_X+1;
+            
             for(int i = minX; i < minUnchangeX; ++i) {
                 for (int j = 0; j < Constant.MAX_Y + 1; ++j)
-                    if (array[i, j] != 0) {
-                        getBtn(i*(Constant.MAX_Y+1)+j).BackColor = Constant.valueToColor(array[i, j]);
-                    }
+                    getBtn(i*(Constant.MAX_Y+1)+j).BackColor = Constant.valueToColor(array[i, j]);
+            }
+        }
+
+        //置block1为block2，block2重新随机获得一个方块
+        public void setBlock1AndBlock2() {
+
+            //更新block1
+            switch (block2.getType()) {
+                case Constant.BLOCK_TYPE_O: block1 = new Block_O(); break;
+                case Constant.BLOCK_TYPE_I: block1 = new Block_I(); break;
+                case Constant.BLOCK_TYPE_T: block1 = new Block_T(); break;
+                case Constant.BLOCK_TYPE_L: block1 = new Block_L(); break;
+                case Constant.BLOCK_TYPE_J: block1 = new Block_J(); break;
+                case Constant.BLOCK_TYPE_Z: block1 = new Block_Z(); break;
+                case Constant.BLOCK_TYPE_S: block1 = new Block_S(); break;
+                case Constant.BLOCK_TYPE_EXTENSION1: block1 = new Block_E1(); break;
+                case Constant.BLOCK_TYPE_EXTENSION2: block1 = new Block_E2(); break;
+                case Constant.BLOCK_TYPE_EXTENSION3: block1 = new Block_E3(); break;
+                case Constant.BLOCK_TYPE_EXTENSION4: block1 = new Block_E4(); break;
+                case Constant.BLOCK_TYPE_EXTENSION5: block1 = new Block_E5(); break;
+                case Constant.BLOCK_TYPE_EXTENSION6: block1 = new Block_E6(); break;
+                case Constant.BLOCK_TYPE_EXTENSION7: block1 = new Block_E7(); break;
+                case Constant.BLOCK_TYPE_EXTENSION8: block1 = new Block_E8(); break;
+                case Constant.BLOCK_TYPE_BOMB: block1 = new Block_Bomb(); break;
+                case Constant.BLOCK_TYPE_SUPER_BOMB: block1 = new Block_SuperBomb(); break;
+                default: throw new Exception();
+            }
+            block1.copyFrom(block2);
+            
+            //更新block2
+            Block block = getBlock();
+            switch (block.getType()) {
+                case Constant.BLOCK_TYPE_O: block2 = new Block_O(); break;
+                case Constant.BLOCK_TYPE_I: block2 = new Block_I(); break;
+                case Constant.BLOCK_TYPE_T: block2 = new Block_T(); break;
+                case Constant.BLOCK_TYPE_L: block2 = new Block_L(); break;
+                case Constant.BLOCK_TYPE_J: block2 = new Block_J(); break;
+                case Constant.BLOCK_TYPE_Z: block2 = new Block_Z(); break;
+                case Constant.BLOCK_TYPE_S: block2 = new Block_S(); break;
+                case Constant.BLOCK_TYPE_EXTENSION1: block2 = new Block_E1(); break;
+                case Constant.BLOCK_TYPE_EXTENSION2: block2 = new Block_E2(); break;
+                case Constant.BLOCK_TYPE_EXTENSION3: block2 = new Block_E3(); break;
+                case Constant.BLOCK_TYPE_EXTENSION4: block2 = new Block_E4(); break;
+                case Constant.BLOCK_TYPE_EXTENSION5: block2 = new Block_E5(); break;
+                case Constant.BLOCK_TYPE_EXTENSION6: block2 = new Block_E6(); break;
+                case Constant.BLOCK_TYPE_EXTENSION7: block2 = new Block_E7(); break;
+                case Constant.BLOCK_TYPE_EXTENSION8: block2 = new Block_E8(); break;
+                case Constant.BLOCK_TYPE_BOMB: block2 = new Block_Bomb(); break;
+                case Constant.BLOCK_TYPE_SUPER_BOMB: block2 = new Block_SuperBomb(); break;
+                default: throw new Exception();
             }
         }
 
@@ -359,36 +490,180 @@ namespace Tetris_New {
             startGame();
         }
 
+        //显示爆炸效果
+        public void showExplosion(Block block, bool show) {
+            int type = block.getType();
+            int addV = 0;
+            Point p;
+            if (type == Constant.BLOCK_TYPE_BOMB) {
+                addV = 1;
+                p = block.getPoint0();
+            } else if (type == Constant.BLOCK_TYPE_SUPER_BOMB) {
+                addV = 3;
+                p = block.getPoint4();
+            } else throw new Exception();
+
+            int begX = p.X - addV;
+            int begY = p.Y - addV;
+            int endX = p.X + addV;
+            int endY = p.Y + addV;
+
+            if (begX < 0) begX = 0;
+            if (endX > Constant.MAX_X) endX = Constant.MAX_X;
+            if (begY < 0) begY = 0;
+            if (endY > Constant.MAX_Y) endY = Constant.MAX_Y;
+
+            int index = -1;
+            Color color;
+            if (show) color = Constant.EXPLOSION_COLOR;
+            else color = Constant.BTNS_DEFAULT_COLOR;
+            for (int i = begX; i <= endX; ++i) {
+                for (int j = begY; j <= endY; ++j) {
+                    index = i * (Constant.MAX_Y + 1) + j;
+                    getBtn(index).BackColor = color;
+                }
+            }
+        }
+
+        //判断游戏是否结束
+        public bool isGameOver(Block block) {
+            int type = block.getType();
+            //是炸弹则游戏没有结束
+            if (type == Constant.BLOCK_TYPE_BOMB || type == Constant.BLOCK_TYPE_SUPER_BOMB) return false;
+            int bc = Constant.getBlockCount(block.getType());
+
+            int index = -1;
+            Point p = block.getPoint0();
+            index = p.X * (Constant.MAX_Y + 1) + p.Y;
+            if (map.getValue(index) != 0) return true;
+
+            if (bc >= 3) {
+                p = block.getPoint1();
+                index = p.X * (Constant.MAX_Y + 1) + p.Y;
+                if (map.getValue(index) != 0) return true;
+            }
+
+            if (bc == 4) {
+                p = block.getPoint0();
+                index = p.X * (Constant.MAX_Y + 1) + p.Y;
+                if (map.getValue(index) != 0) return true;
+            }
+
+            return false;
+        }
+
         private void mainTimer_Tick(object sender, EventArgs e) {
             if (inGame) {
+
+                //能下移
                 if (block1.canMoveDown(map)) {
                     eraseBlock(block1);
                     block1.update_MD();
                     showBlock(block1);
-                }else {
+                }
+
+                //不能下移
+                else {
                     int count = 0;
+                    int type = block1.getType();
 
                     //炸弹
-                    if(block1.getType()==Constant.BLOCK_TYPE_BOMB || block1.getType() == Constant.BLOCK_TYPE_SUPER_BOMB) {
+                    if (type == Constant.BLOCK_TYPE_BOMB || type == Constant.BLOCK_TYPE_SUPER_BOMB) {
                         map.eliminate(block1, out count);
-                    } 
-                    
+                        mainTimer.Stop();
+                        inGame = false;
+                        bombTimer.Start();
+                        showExplosion(block1, true);
+                    }
+
                     //普通方块
                     else {
-                        //TODO: 
+                        addBlockToMap(block1);
+                        map.eliminate(block1, out count);
+                        if (count == 0) ;
+                        else {
+                            switch (count) {
+                                case 1: score += 1; break;
+                                case 2: score += 3; break;
+                                case 3: score += 5; break;
+                                case 4: score += 10; break;
+                                default: throw new Exception();
+                            }
+                        }
+                        setBlock1AndBlock2();
+
+                        inGame = false;
+                        if (isGameOver(block1)) {
+                            inGame = false;
+                            mainTimer.Stop();
+                            MessageBox.Show("游戏结束！");
+                            resetBtns();
+                            eraseNextBlock();
+                            return;
+                        } else {
+                            inGame = true;
+                            showBlock(block1);
+                            showNextBlock(block2);
+                        }
                     }
                 }
             }
         }
 
+        //设置边框颜色
+        public void setEdgeColor(Color color) {
+            edgeBtn0.BackColor = color;
+            edgeBtn1.BackColor = color;
+            edgeBtn2.BackColor = color;
+            edgeBtn3.BackColor = color;
+        }
 
+        //显示游戏结束时最后的方块
+        public void showLastBlock() {
+            if (map.getMinX() == 0) return;                //地图中有值的最小行已是最顶行，则不显示了
+            Color color = Constant.valueToColor(block1.getType());
+            int index = Constant.MAX_Y / 2;
 
+            //并不是按照block1的形状来设置的，因为游戏结束时玩家来不及估计右边的下一个方块
+            //故随意设置3个格子就行
+            getBtn(index - 1).BackColor = color;
+            getBtn(index).BackColor = color;
+            getBtn(index + 1).BackColor = color;
+        }
+        
+        //将方块添加到图中
+        public void addBlockToMap(Block block) {
+            int bc = Constant.getBlockCount(block.getType());
 
+            Point p = block.getPoint0();
+            int value = block.getValue();
+            map.setValue(p,value);
 
+            p = block.getPoint1();
+            map.setValue(p, value);
 
+            if (bc >= 3) {
+                p = block.getPoint2();
+                map.setValue(p, value);
+            }
+            if (bc == 4) {
+                p = block.getPoint3();
+                map.setValue(p, value);
+            }
+        }
 
+        private void bombTimer_Tick(object sender, EventArgs e) {
+            bombTimer.Stop();
+            inGame = true;
+            mainTimer.Start();
 
+            showExplosion(block1, false);
+            setBlock1AndBlock2();
+            showBlock(block1);
+            showNextBlock(block2);
+        }
 
+        
 
 
         //显示下一个方块
@@ -1108,5 +1383,45 @@ namespace Tetris_New {
             button287.BackColor = color;
         }
         
+        private void GameForm_KeyDown(object sender, KeyEventArgs e) {
+            if (!inGame) return;
+            switch (e.KeyCode) {
+                case Keys.W: {
+                        if (block1.canRotate(map)) {
+                            eraseBlock(block1);
+                            block1.update_RTT();
+                            showBlock(block1);
+                        }
+                        break;
+                    }
+                case Keys.S: {
+                        if (block1.canMoveDown(map)) {
+                            mainTimer.Stop();
+                            eraseBlock(block1);
+                            block1.update_MD();
+                            showBlock(block1);
+                            mainTimer.Start();
+                        }
+                        break;
+                    }
+                case Keys.A: {
+                        if (block1.canMoveLeft(map)) {
+                            eraseBlock(block1);
+                            block1.update_ML();
+                            showBlock(block1);
+                        }
+                        break;
+                    }
+                case Keys.D: {
+                        if (block1.canMoveRight(map)) {
+                            eraseBlock(block1);
+                            block1.update_MR();
+                            showBlock(block1);
+                        }
+                        break;
+                    }
+                default: break;
+            }
+        }
     }
 }

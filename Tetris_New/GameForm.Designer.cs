@@ -344,15 +344,14 @@
             this.startBtn = new System.Windows.Forms.Button();
             this.edgeBtn11 = new System.Windows.Forms.Button();
             this.gameModeLB = new System.Windows.Forms.Label();
-            this.boundaryAccLB = new System.Windows.Forms.Label();
+            this.extraBlcokLB = new System.Windows.Forms.Label();
             this.edgeBtn12 = new System.Windows.Forms.Button();
             this.bombLB = new System.Windows.Forms.Label();
             this.edgeBtn10 = new System.Windows.Forms.Button();
-            this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.bombTimer = new System.Windows.Forms.Timer(this.components);
             this.recordLB = new System.Windows.Forms.Label();
             this.scoreLB = new System.Windows.Forms.Label();
-            this.blockTypeLB = new System.Windows.Forms.Label();
+            this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button0
@@ -367,6 +366,7 @@
             this.button0.Name = "button0";
             this.button0.Size = new System.Drawing.Size(24, 24);
             this.button0.TabIndex = 127;
+            this.button0.Text = "`";
             this.button0.UseVisualStyleBackColor = false;
             // 
             // button1
@@ -4825,16 +4825,16 @@
             this.gameModeLB.TabIndex = 457;
             this.gameModeLB.Text = "经典模式";
             // 
-            // boundaryAccLB
+            // extraBlcokLB
             // 
-            this.boundaryAccLB.AutoSize = true;
-            this.boundaryAccLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.boundaryAccLB.ForeColor = System.Drawing.Color.Blue;
-            this.boundaryAccLB.Location = new System.Drawing.Point(351, 306);
-            this.boundaryAccLB.Name = "boundaryAccLB";
-            this.boundaryAccLB.Size = new System.Drawing.Size(74, 19);
-            this.boundaryAccLB.TabIndex = 458;
-            this.boundaryAccLB.Text = "不跨越边界";
+            this.extraBlcokLB.AutoSize = true;
+            this.extraBlcokLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.extraBlcokLB.ForeColor = System.Drawing.Color.Blue;
+            this.extraBlcokLB.Location = new System.Drawing.Point(351, 306);
+            this.extraBlcokLB.Name = "extraBlcokLB";
+            this.extraBlcokLB.Size = new System.Drawing.Size(100, 19);
+            this.extraBlcokLB.TabIndex = 458;
+            this.extraBlcokLB.Text = "不启用扩展方块";
             // 
             // edgeBtn12
             // 
@@ -4875,14 +4875,10 @@
             this.edgeBtn10.TabIndex = 461;
             this.edgeBtn10.UseVisualStyleBackColor = false;
             // 
-            // mainTimer
-            // 
-            this.mainTimer.Interval = 200;
-            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
-            // 
             // bombTimer
             // 
             this.bombTimer.Interval = 200;
+            this.bombTimer.Tick += new System.EventHandler(this.bombTimer_Tick);
             // 
             // recordLB
             // 
@@ -4906,16 +4902,9 @@
             this.scoreLB.TabIndex = 463;
             this.scoreLB.Text = "0";
             // 
-            // blockTypeLB
+            // mainTimer
             // 
-            this.blockTypeLB.AutoSize = true;
-            this.blockTypeLB.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.blockTypeLB.ForeColor = System.Drawing.Color.Blue;
-            this.blockTypeLB.Location = new System.Drawing.Point(351, 400);
-            this.blockTypeLB.Name = "blockTypeLB";
-            this.blockTypeLB.Size = new System.Drawing.Size(61, 19);
-            this.blockTypeLB.TabIndex = 464;
-            this.blockTypeLB.Text = "方块类型";
+            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
             // GameForm
             // 
@@ -4923,13 +4912,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(496, 681);
-            this.Controls.Add(this.blockTypeLB);
             this.Controls.Add(this.scoreLB);
             this.Controls.Add(this.recordLB);
             this.Controls.Add(this.edgeBtn10);
             this.Controls.Add(this.bombLB);
             this.Controls.Add(this.edgeBtn12);
-            this.Controls.Add(this.boundaryAccLB);
+            this.Controls.Add(this.extraBlcokLB);
             this.Controls.Add(this.gameModeLB);
             this.Controls.Add(this.edgeBtn11);
             this.Controls.Add(this.startBtn);
@@ -5259,6 +5247,7 @@
             this.Text = "俄罗斯方块";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.GameForm_FormClosed);
             this.Load += new System.EventHandler(this.GameForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5586,14 +5575,13 @@
         private System.Windows.Forms.Button startBtn;
         private System.Windows.Forms.Button edgeBtn11;
         private System.Windows.Forms.Label gameModeLB;
-        private System.Windows.Forms.Label boundaryAccLB;
+        private System.Windows.Forms.Label extraBlcokLB;
         private System.Windows.Forms.Button edgeBtn12;
         private System.Windows.Forms.Label bombLB;
         private System.Windows.Forms.Button edgeBtn10;
-        private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.Timer bombTimer;
         private System.Windows.Forms.Label recordLB;
         private System.Windows.Forms.Label scoreLB;
-        private System.Windows.Forms.Label blockTypeLB;
+        private System.Windows.Forms.Timer mainTimer;
     }
 }

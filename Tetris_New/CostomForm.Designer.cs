@@ -4575,9 +4575,9 @@
             this.label1.ForeColor = System.Drawing.Color.Blue;
             this.label1.Location = new System.Drawing.Point(45, 655);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.Size = new System.Drawing.Size(106, 21);
             this.label1.TabIndex = 725;
-            this.label1.Text = "跨越边界";
+            this.label1.Text = "启用扩展方块";
             // 
             // CostomForm
             // 

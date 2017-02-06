@@ -114,10 +114,11 @@ namespace Tetris_New {
         public static Color CustomBlockColor = Color.Lime;
         public static Color BTNS_DEFAULT_COLOR = Color.FromArgb(224, 224, 224);
         public static Color BOMB_CORE_COLOR = Color.Red;
+        public static Color EXPLOSION_COLOR = Color.White;
 
-        //跨越边界
-        public const bool NO_BOUNDARY_ACC = false;
-        public const bool BOUNDARY_ACC = true;
+        //扩展方块
+        public const bool NO_EXTRA = false;
+        public const bool HAVE_EXTRA = true;
 
         //炸弹是否可用
         public const bool NO_BOMB = false;

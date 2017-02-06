@@ -84,11 +84,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(46, 548);
+            this.label1.Location = new System.Drawing.Point(10, 548);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 21);
+            this.label1.Size = new System.Drawing.Size(106, 21);
             this.label1.TabIndex = 9;
-            this.label1.Text = "跨越边界";
+            this.label1.Text = "启用扩展方块";
             // 
             // boundaryAccCB
             // 

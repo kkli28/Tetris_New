@@ -13,7 +13,7 @@ namespace Tetris_New {
         int[] states;                           //标记按钮状态
         Color color0;                        //未选中时边框颜色
         Color color1;                        //选中时边框颜色
-        bool boundaryAcc;              //是否跨越边界
+        bool haveExtra;                   //是否启用扩展方块
         bool haveBomb;                  //是否启用炸弹
 
         bool startBtnClick;               //是否点击了开始按钮
@@ -26,7 +26,7 @@ namespace Tetris_New {
 
             color0 = Color.FromArgb(224, 224, 224);
             color1 = Color.Lime;
-            boundaryAcc = Constant.NO_BOUNDARY_ACC;
+            haveExtra = Constant.NO_EXTRA;
             haveBomb = Constant.NO_BOMB;
 
             boundaryAccCB.SelectedIndex = 0;
@@ -57,10 +57,10 @@ namespace Tetris_New {
         private void boundaryAccCB_SelectedIndexChanged(object sender, EventArgs e) {
             switch (boundaryAccCB.SelectedIndex) {
                 case 0:
-                    boundaryAcc = Constant.NO_BOUNDARY_ACC;
+                    haveExtra = Constant.NO_EXTRA;
                     break;
                 default:
-                    boundaryAcc = Constant.BOUNDARY_ACC;
+                    haveExtra = Constant.HAVE_EXTRA;
                     break;
             }
             
@@ -109,7 +109,7 @@ namespace Tetris_New {
 
         private void startBtn_Click(object sender, EventArgs e) {
             startBtnClick = true;
-            GameForm gf = new GameForm(Constant.CUSTOM_MODE, boundaryAcc, haveBomb, -1, states);
+            GameForm gf = new GameForm(Constant.CUSTOM_MODE, haveExtra, haveBomb, -1, states);
             gf.Show();
             this.Close();
         }

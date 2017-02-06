@@ -68,7 +68,7 @@ namespace Tetris_New {
                 points[2].set(point3.X + 1, point3.Y);
                 points[3].set(point2.X + 1, point2.Y);
             } else {
-                points[0].set(point2.X, point2.Y + 1);
+                points[0].set(point3.X, point3.Y + 1);
                 points[1].set(point3.X, point3.Y - 1);
                 points[2].set(point2.X, point2.Y - 1);
                 points[3].set(point2.X, point2.Y + 1);
@@ -171,7 +171,7 @@ namespace Tetris_New {
                 ++point3.Y;
             }
 
-            state = (state + 1) % 2;                //更新状态
+            state = (state + 1) % 4;                //更新状态
         }
 
         //左移--更新点
