@@ -31,11 +31,9 @@ namespace Tetris_New {
         public override int getState() { return state; }
         public override int getValue() { return value; }
 
-        //设置值
+        //设置值，无效果
         public override void setValue(int val) {
-            if (val < Constant.MIN_VALUE || val > Constant.MAX_VALUE)
-                throw new Exception();
-            value = val;
+            ;
         }
 
         //能否旋转

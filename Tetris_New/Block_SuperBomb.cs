@@ -18,7 +18,7 @@ namespace Tetris_New {
 
         //构造函数
         public Block_SuperBomb() {
-            value = Constant.BLOCK_BOMB_CORE_VALUE;
+            value = Constant.BLOCK_BOMB_OUT_VALUE;
             point0 = new Point(0, 6);
             point1 = new Point(1, 5);
             point2 = new Point(1, 7);
@@ -39,11 +39,9 @@ namespace Tetris_New {
         public override int getState() { return state; }
         public override int getValue() { return value; }
 
-        //设置值
+        //设置值，无效果
         public override void setValue(int val) {
-            if (val < Constant.MIN_VALUE || val > Constant.MAX_VALUE)
-                throw new Exception();
-            value = val;
+            ;
         }
 
         //能否旋转

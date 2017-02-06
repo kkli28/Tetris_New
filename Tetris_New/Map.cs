@@ -8,6 +8,7 @@ namespace Tetris_New {
     public class Map {
         int[,] map;
         int minX;                       //有值的最小行号
+        int minUnchangeX;       //不用更改内容的最小行号
 
         //构造函数
         public Map() {
@@ -15,7 +16,29 @@ namespace Tetris_New {
             for (int i = Constant.MIN_X; i <= Constant.MAX_X; i++)
                 for (int j = Constant.MIN_Y; j <= Constant.MAX_Y; j++)
                     map[i, j] = 0;
+            minX = Constant.MAX_X;
+            minUnchangeX = Constant.MAX_X;
         }
+
+        //重置图
+        public void resetMap() {
+            minX = Constant.MAX_X + 1;
+            minUnchangeX = Constant.MAX_X + 1;
+            for (int i = Constant.MIN_X; i <= Constant.MAX_X; i++)
+                for (int j = Constant.MIN_Y; j <= Constant.MAX_Y; j++)
+                    map[i, j] = 0;
+        }
+
+        //获取地图数组
+        public int[,] getMap() {
+            return map;
+        }
+
+        //获取minX
+        public int getMinX() { return minX; }
+
+        //获取minUnchangeX
+        public int getMinUnchangeX() { return minUnchangeX; }
 
         //判断值是否合法
         public bool validX(int x) {
@@ -41,15 +64,19 @@ namespace Tetris_New {
         //设置值--通过索引
         public void setValue(int index,int value) {
             if (validIndex(index) && validValue(value)) {
-                map[index / (Constant.MAX_Y + 1), index % (Constant.MAX_Y + 1)] = value;
+                int x = index / (Constant.MAX_Y + 1);
+                int y = index % (Constant.MAX_Y + 1);
+                map[x, y] = value;
+                if (x < minX) minX = x;
             } else throw new Exception();
         }
 
         //设置值--通过坐标
         public void setValue(int x, int y, int value) {
-            if (validX(x) && validY(y) && validValue(value))
+            if (validX(x) && validY(y) && validValue(value)) {
                 map[x, y] = value;
-            else throw new Exception();
+                if (x < minX) minX = x;
+            } else throw new Exception();
         }
 
         //设置值--通过点
@@ -60,6 +87,20 @@ namespace Tetris_New {
             int y = p.Y;
             map[x, y] = val;
             if (x < minX) minX = x;                     //设置有值的最小行数
+        }
+
+        //设置值--通过方块
+        public void setValue(Block block) {
+            int type = block.getType();
+            if (type == Constant.BLOCK_TYPE_BOMB || type == Constant.BLOCK_TYPE_SUPER_BOMB) throw new Exception();
+            int bc = Constant.getBlockCount(type);
+
+            int value = block.getValue();
+            setValue(block.getPoint0(), value);
+            setValue(block.getPoint1(), value);
+
+            if (bc >= 3) setValue(block.getPoint2(), value);
+            if (bc == 4) setValue(block.getPoint3(), value);
         }
 
         //获取值--通过坐标
@@ -109,6 +150,8 @@ namespace Tetris_New {
                 bigExplosion(block.getPoint4());
             } 
             
+
+            //TODO: 更新minX和minUnchangeX
             //普通方块
             else {
                 bool needElim = false;
@@ -123,6 +166,7 @@ namespace Tetris_New {
                     if (needElim) {
                         ++count;
                         moveLines(i);                   //第i行上面所有行下移
+                        minUnchangeX = i + 1;
                     }
                 }
             }
@@ -135,6 +179,7 @@ namespace Tetris_New {
                 resetValue(begIndex, begIndex + 4);
                 begIndex += Constant.MAX_Y + 1;
             }
+            minUnchangeX = p.X + 3;                 //没有变的行为爆炸下方的第3行（前2行在爆炸范围内）
         }
 
         //以点p为中心，大型爆炸
@@ -144,6 +189,7 @@ namespace Tetris_New {
                 resetValue(begIndex, begIndex + 8);
                 begIndex += Constant.MAX_Y + 1;
             }
+            minUnchangeX = p.X + 5;                 //没有变的行为爆炸下方的第5行（前4行在爆炸范围内）
         }
 
         //清除索引从index1到index2的位置的值

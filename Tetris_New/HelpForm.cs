@@ -25,6 +25,8 @@ namespace Tetris_New {
 
         private void label3_MouseLeave(object sender, EventArgs e) {
             Label label = (Label)sender;
+
+            //帮助文字不用Constant.TextColor0
             label.ForeColor = Color.FromArgb(224,224,224);
         }
     }

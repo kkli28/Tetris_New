@@ -312,10 +312,10 @@
             this.button285 = new System.Windows.Forms.Button();
             this.button286 = new System.Windows.Forms.Button();
             this.button287 = new System.Windows.Forms.Button();
-            this.button288 = new System.Windows.Forms.Button();
-            this.button289 = new System.Windows.Forms.Button();
-            this.button290 = new System.Windows.Forms.Button();
-            this.button291 = new System.Windows.Forms.Button();
+            this.edgeBtn3 = new System.Windows.Forms.Button();
+            this.edgeBtn1 = new System.Windows.Forms.Button();
+            this.edgeBtn0 = new System.Windows.Forms.Button();
+            this.edgeBtn2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -335,19 +335,19 @@
             this.nextBtn14 = new System.Windows.Forms.Button();
             this.nextBtn15 = new System.Windows.Forms.Button();
             this.nextBtn16 = new System.Windows.Forms.Button();
-            this.button292 = new System.Windows.Forms.Button();
-            this.button293 = new System.Windows.Forms.Button();
-            this.button294 = new System.Windows.Forms.Button();
-            this.button295 = new System.Windows.Forms.Button();
-            this.button296 = new System.Windows.Forms.Button();
-            this.button297 = new System.Windows.Forms.Button();
+            this.edgeBtn7 = new System.Windows.Forms.Button();
+            this.edgeBtn5 = new System.Windows.Forms.Button();
+            this.edgeBtn4 = new System.Windows.Forms.Button();
+            this.edgeBtn6 = new System.Windows.Forms.Button();
+            this.edgeBtn9 = new System.Windows.Forms.Button();
+            this.edgeBtn8 = new System.Windows.Forms.Button();
             this.startBtn = new System.Windows.Forms.Button();
-            this.button299 = new System.Windows.Forms.Button();
+            this.edgeBtn11 = new System.Windows.Forms.Button();
             this.gameModeLB = new System.Windows.Forms.Label();
             this.boundaryAccLB = new System.Windows.Forms.Label();
-            this.button298 = new System.Windows.Forms.Button();
+            this.edgeBtn12 = new System.Windows.Forms.Button();
             this.bombLB = new System.Windows.Forms.Label();
-            this.button300 = new System.Windows.Forms.Button();
+            this.edgeBtn10 = new System.Windows.Forms.Button();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.bombTimer = new System.Windows.Forms.Timer(this.components);
             this.recordLB = new System.Windows.Forms.Label();
@@ -4387,61 +4387,61 @@
             this.button287.TabIndex = 403;
             this.button287.UseVisualStyleBackColor = false;
             // 
-            // button288
+            // edgeBtn3
             // 
-            this.button288.BackColor = System.Drawing.Color.Silver;
-            this.button288.Enabled = false;
-            this.button288.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button288.FlatAppearance.BorderSize = 0;
-            this.button288.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button288.ForeColor = System.Drawing.Color.Black;
-            this.button288.Location = new System.Drawing.Point(12, 12);
-            this.button288.Name = "button288";
-            this.button288.Size = new System.Drawing.Size(8, 615);
-            this.button288.TabIndex = 426;
-            this.button288.UseVisualStyleBackColor = false;
+            this.edgeBtn3.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn3.Enabled = false;
+            this.edgeBtn3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn3.FlatAppearance.BorderSize = 0;
+            this.edgeBtn3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn3.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn3.Location = new System.Drawing.Point(12, 12);
+            this.edgeBtn3.Name = "edgeBtn3";
+            this.edgeBtn3.Size = new System.Drawing.Size(8, 615);
+            this.edgeBtn3.TabIndex = 426;
+            this.edgeBtn3.UseVisualStyleBackColor = false;
             // 
-            // button289
+            // edgeBtn1
             // 
-            this.button289.BackColor = System.Drawing.Color.Silver;
-            this.button289.Enabled = false;
-            this.button289.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button289.FlatAppearance.BorderSize = 0;
-            this.button289.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button289.ForeColor = System.Drawing.Color.Black;
-            this.button289.Location = new System.Drawing.Point(319, 12);
-            this.button289.Name = "button289";
-            this.button289.Size = new System.Drawing.Size(8, 615);
-            this.button289.TabIndex = 427;
-            this.button289.UseVisualStyleBackColor = false;
+            this.edgeBtn1.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn1.Enabled = false;
+            this.edgeBtn1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn1.FlatAppearance.BorderSize = 0;
+            this.edgeBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn1.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn1.Location = new System.Drawing.Point(319, 12);
+            this.edgeBtn1.Name = "edgeBtn1";
+            this.edgeBtn1.Size = new System.Drawing.Size(8, 615);
+            this.edgeBtn1.TabIndex = 427;
+            this.edgeBtn1.UseVisualStyleBackColor = false;
             // 
-            // button290
+            // edgeBtn0
             // 
-            this.button290.BackColor = System.Drawing.Color.Silver;
-            this.button290.Enabled = false;
-            this.button290.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button290.FlatAppearance.BorderSize = 0;
-            this.button290.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button290.ForeColor = System.Drawing.Color.Black;
-            this.button290.Location = new System.Drawing.Point(20, 12);
-            this.button290.Name = "button290";
-            this.button290.Size = new System.Drawing.Size(299, 8);
-            this.button290.TabIndex = 428;
-            this.button290.UseVisualStyleBackColor = false;
+            this.edgeBtn0.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn0.Enabled = false;
+            this.edgeBtn0.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn0.FlatAppearance.BorderSize = 0;
+            this.edgeBtn0.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn0.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn0.Location = new System.Drawing.Point(20, 12);
+            this.edgeBtn0.Name = "edgeBtn0";
+            this.edgeBtn0.Size = new System.Drawing.Size(299, 8);
+            this.edgeBtn0.TabIndex = 428;
+            this.edgeBtn0.UseVisualStyleBackColor = false;
             // 
-            // button291
+            // edgeBtn2
             // 
-            this.button291.BackColor = System.Drawing.Color.Silver;
-            this.button291.Enabled = false;
-            this.button291.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button291.FlatAppearance.BorderSize = 0;
-            this.button291.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button291.ForeColor = System.Drawing.Color.Black;
-            this.button291.Location = new System.Drawing.Point(20, 619);
-            this.button291.Name = "button291";
-            this.button291.Size = new System.Drawing.Size(299, 8);
-            this.button291.TabIndex = 429;
-            this.button291.UseVisualStyleBackColor = false;
+            this.edgeBtn2.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn2.Enabled = false;
+            this.edgeBtn2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn2.FlatAppearance.BorderSize = 0;
+            this.edgeBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn2.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn2.Location = new System.Drawing.Point(20, 619);
+            this.edgeBtn2.Name = "edgeBtn2";
+            this.edgeBtn2.Size = new System.Drawing.Size(299, 8);
+            this.edgeBtn2.TabIndex = 429;
+            this.edgeBtn2.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -4700,89 +4700,89 @@
             this.nextBtn16.TabIndex = 448;
             this.nextBtn16.UseVisualStyleBackColor = false;
             // 
-            // button292
+            // edgeBtn7
             // 
-            this.button292.BackColor = System.Drawing.Color.Silver;
-            this.button292.Enabled = false;
-            this.button292.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button292.FlatAppearance.BorderSize = 0;
-            this.button292.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button292.ForeColor = System.Drawing.Color.Black;
-            this.button292.Location = new System.Drawing.Point(345, 16);
-            this.button292.Name = "button292";
-            this.button292.Size = new System.Drawing.Size(4, 100);
-            this.button292.TabIndex = 449;
-            this.button292.UseVisualStyleBackColor = false;
+            this.edgeBtn7.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn7.Enabled = false;
+            this.edgeBtn7.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn7.FlatAppearance.BorderSize = 0;
+            this.edgeBtn7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn7.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn7.Location = new System.Drawing.Point(345, 16);
+            this.edgeBtn7.Name = "edgeBtn7";
+            this.edgeBtn7.Size = new System.Drawing.Size(4, 100);
+            this.edgeBtn7.TabIndex = 449;
+            this.edgeBtn7.UseVisualStyleBackColor = false;
             // 
-            // button293
+            // edgeBtn5
             // 
-            this.button293.BackColor = System.Drawing.Color.Silver;
-            this.button293.Enabled = false;
-            this.button293.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button293.FlatAppearance.BorderSize = 0;
-            this.button293.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button293.ForeColor = System.Drawing.Color.Black;
-            this.button293.Location = new System.Drawing.Point(448, 16);
-            this.button293.Name = "button293";
-            this.button293.Size = new System.Drawing.Size(4, 100);
-            this.button293.TabIndex = 450;
-            this.button293.UseVisualStyleBackColor = false;
+            this.edgeBtn5.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn5.Enabled = false;
+            this.edgeBtn5.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn5.FlatAppearance.BorderSize = 0;
+            this.edgeBtn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn5.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn5.Location = new System.Drawing.Point(448, 16);
+            this.edgeBtn5.Name = "edgeBtn5";
+            this.edgeBtn5.Size = new System.Drawing.Size(4, 100);
+            this.edgeBtn5.TabIndex = 450;
+            this.edgeBtn5.UseVisualStyleBackColor = false;
             // 
-            // button294
+            // edgeBtn4
             // 
-            this.button294.BackColor = System.Drawing.Color.Silver;
-            this.button294.Enabled = false;
-            this.button294.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button294.FlatAppearance.BorderSize = 0;
-            this.button294.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button294.ForeColor = System.Drawing.Color.Black;
-            this.button294.Location = new System.Drawing.Point(345, 12);
-            this.button294.Name = "button294";
-            this.button294.Size = new System.Drawing.Size(107, 4);
-            this.button294.TabIndex = 451;
-            this.button294.UseVisualStyleBackColor = false;
+            this.edgeBtn4.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn4.Enabled = false;
+            this.edgeBtn4.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn4.FlatAppearance.BorderSize = 0;
+            this.edgeBtn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn4.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn4.Location = new System.Drawing.Point(345, 12);
+            this.edgeBtn4.Name = "edgeBtn4";
+            this.edgeBtn4.Size = new System.Drawing.Size(107, 4);
+            this.edgeBtn4.TabIndex = 451;
+            this.edgeBtn4.UseVisualStyleBackColor = false;
             // 
-            // button295
+            // edgeBtn6
             // 
-            this.button295.BackColor = System.Drawing.Color.Silver;
-            this.button295.Enabled = false;
-            this.button295.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button295.FlatAppearance.BorderSize = 0;
-            this.button295.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button295.ForeColor = System.Drawing.Color.Black;
-            this.button295.Location = new System.Drawing.Point(345, 115);
-            this.button295.Name = "button295";
-            this.button295.Size = new System.Drawing.Size(107, 4);
-            this.button295.TabIndex = 452;
-            this.button295.UseVisualStyleBackColor = false;
+            this.edgeBtn6.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn6.Enabled = false;
+            this.edgeBtn6.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn6.FlatAppearance.BorderSize = 0;
+            this.edgeBtn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn6.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn6.Location = new System.Drawing.Point(345, 115);
+            this.edgeBtn6.Name = "edgeBtn6";
+            this.edgeBtn6.Size = new System.Drawing.Size(107, 4);
+            this.edgeBtn6.TabIndex = 452;
+            this.edgeBtn6.UseVisualStyleBackColor = false;
             // 
-            // button296
+            // edgeBtn9
             // 
-            this.button296.BackColor = System.Drawing.Color.Silver;
-            this.button296.Enabled = false;
-            this.button296.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button296.FlatAppearance.BorderSize = 0;
-            this.button296.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button296.ForeColor = System.Drawing.Color.Black;
-            this.button296.Location = new System.Drawing.Point(345, 166);
-            this.button296.Name = "button296";
-            this.button296.Size = new System.Drawing.Size(4, 216);
-            this.button296.TabIndex = 453;
-            this.button296.UseVisualStyleBackColor = false;
+            this.edgeBtn9.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn9.Enabled = false;
+            this.edgeBtn9.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn9.FlatAppearance.BorderSize = 0;
+            this.edgeBtn9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn9.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn9.Location = new System.Drawing.Point(345, 166);
+            this.edgeBtn9.Name = "edgeBtn9";
+            this.edgeBtn9.Size = new System.Drawing.Size(4, 216);
+            this.edgeBtn9.TabIndex = 453;
+            this.edgeBtn9.UseVisualStyleBackColor = false;
             // 
-            // button297
+            // edgeBtn8
             // 
-            this.button297.BackColor = System.Drawing.Color.Silver;
-            this.button297.Enabled = false;
-            this.button297.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button297.FlatAppearance.BorderSize = 0;
-            this.button297.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button297.ForeColor = System.Drawing.Color.Black;
-            this.button297.Location = new System.Drawing.Point(345, 162);
-            this.button297.Name = "button297";
-            this.button297.Size = new System.Drawing.Size(107, 4);
-            this.button297.TabIndex = 454;
-            this.button297.UseVisualStyleBackColor = false;
+            this.edgeBtn8.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn8.Enabled = false;
+            this.edgeBtn8.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn8.FlatAppearance.BorderSize = 0;
+            this.edgeBtn8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn8.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn8.Location = new System.Drawing.Point(345, 162);
+            this.edgeBtn8.Name = "edgeBtn8";
+            this.edgeBtn8.Size = new System.Drawing.Size(107, 4);
+            this.edgeBtn8.TabIndex = 454;
+            this.edgeBtn8.UseVisualStyleBackColor = false;
             // 
             // startBtn
             // 
@@ -4800,19 +4800,19 @@
             this.startBtn.UseVisualStyleBackColor = false;
             this.startBtn.Click += new System.EventHandler(this.startBtn_Click);
             // 
-            // button299
+            // edgeBtn11
             // 
-            this.button299.BackColor = System.Drawing.Color.Silver;
-            this.button299.Enabled = false;
-            this.button299.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button299.FlatAppearance.BorderSize = 0;
-            this.button299.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button299.ForeColor = System.Drawing.Color.Black;
-            this.button299.Location = new System.Drawing.Point(349, 248);
-            this.button299.Name = "button299";
-            this.button299.Size = new System.Drawing.Size(103, 4);
-            this.button299.TabIndex = 456;
-            this.button299.UseVisualStyleBackColor = false;
+            this.edgeBtn11.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn11.Enabled = false;
+            this.edgeBtn11.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn11.FlatAppearance.BorderSize = 0;
+            this.edgeBtn11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn11.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn11.Location = new System.Drawing.Point(349, 248);
+            this.edgeBtn11.Name = "edgeBtn11";
+            this.edgeBtn11.Size = new System.Drawing.Size(103, 4);
+            this.edgeBtn11.TabIndex = 456;
+            this.edgeBtn11.UseVisualStyleBackColor = false;
             // 
             // gameModeLB
             // 
@@ -4836,19 +4836,19 @@
             this.boundaryAccLB.TabIndex = 458;
             this.boundaryAccLB.Text = "不跨越边界";
             // 
-            // button298
+            // edgeBtn12
             // 
-            this.button298.BackColor = System.Drawing.Color.Silver;
-            this.button298.Enabled = false;
-            this.button298.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button298.FlatAppearance.BorderSize = 0;
-            this.button298.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button298.ForeColor = System.Drawing.Color.Black;
-            this.button298.Location = new System.Drawing.Point(349, 378);
-            this.button298.Name = "button298";
-            this.button298.Size = new System.Drawing.Size(107, 4);
-            this.button298.TabIndex = 459;
-            this.button298.UseVisualStyleBackColor = false;
+            this.edgeBtn12.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn12.Enabled = false;
+            this.edgeBtn12.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn12.FlatAppearance.BorderSize = 0;
+            this.edgeBtn12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn12.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn12.Location = new System.Drawing.Point(349, 378);
+            this.edgeBtn12.Name = "edgeBtn12";
+            this.edgeBtn12.Size = new System.Drawing.Size(107, 4);
+            this.edgeBtn12.TabIndex = 459;
+            this.edgeBtn12.UseVisualStyleBackColor = false;
             // 
             // bombLB
             // 
@@ -4861,23 +4861,24 @@
             this.bombLB.TabIndex = 460;
             this.bombLB.Text = "不启用炸弹";
             // 
-            // button300
+            // edgeBtn10
             // 
-            this.button300.BackColor = System.Drawing.Color.Silver;
-            this.button300.Enabled = false;
-            this.button300.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.button300.FlatAppearance.BorderSize = 0;
-            this.button300.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button300.ForeColor = System.Drawing.Color.Black;
-            this.button300.Location = new System.Drawing.Point(452, 162);
-            this.button300.Name = "button300";
-            this.button300.Size = new System.Drawing.Size(4, 216);
-            this.button300.TabIndex = 461;
-            this.button300.UseVisualStyleBackColor = false;
+            this.edgeBtn10.BackColor = System.Drawing.Color.Silver;
+            this.edgeBtn10.Enabled = false;
+            this.edgeBtn10.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.edgeBtn10.FlatAppearance.BorderSize = 0;
+            this.edgeBtn10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.edgeBtn10.ForeColor = System.Drawing.Color.Black;
+            this.edgeBtn10.Location = new System.Drawing.Point(452, 162);
+            this.edgeBtn10.Name = "edgeBtn10";
+            this.edgeBtn10.Size = new System.Drawing.Size(4, 216);
+            this.edgeBtn10.TabIndex = 461;
+            this.edgeBtn10.UseVisualStyleBackColor = false;
             // 
             // mainTimer
             // 
             this.mainTimer.Interval = 200;
+            this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
             // bombTimer
             // 
@@ -4925,19 +4926,19 @@
             this.Controls.Add(this.blockTypeLB);
             this.Controls.Add(this.scoreLB);
             this.Controls.Add(this.recordLB);
-            this.Controls.Add(this.button300);
+            this.Controls.Add(this.edgeBtn10);
             this.Controls.Add(this.bombLB);
-            this.Controls.Add(this.button298);
+            this.Controls.Add(this.edgeBtn12);
             this.Controls.Add(this.boundaryAccLB);
             this.Controls.Add(this.gameModeLB);
-            this.Controls.Add(this.button299);
+            this.Controls.Add(this.edgeBtn11);
             this.Controls.Add(this.startBtn);
-            this.Controls.Add(this.button297);
-            this.Controls.Add(this.button296);
-            this.Controls.Add(this.button295);
-            this.Controls.Add(this.button294);
-            this.Controls.Add(this.button293);
-            this.Controls.Add(this.button292);
+            this.Controls.Add(this.edgeBtn8);
+            this.Controls.Add(this.edgeBtn9);
+            this.Controls.Add(this.edgeBtn6);
+            this.Controls.Add(this.edgeBtn4);
+            this.Controls.Add(this.edgeBtn5);
+            this.Controls.Add(this.edgeBtn7);
             this.Controls.Add(this.nextBtn16);
             this.Controls.Add(this.nextBtn15);
             this.Controls.Add(this.nextBtn14);
@@ -4957,10 +4958,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button291);
-            this.Controls.Add(this.button290);
-            this.Controls.Add(this.button289);
-            this.Controls.Add(this.button288);
+            this.Controls.Add(this.edgeBtn2);
+            this.Controls.Add(this.edgeBtn0);
+            this.Controls.Add(this.edgeBtn1);
+            this.Controls.Add(this.edgeBtn3);
             this.Controls.Add(this.button276);
             this.Controls.Add(this.button277);
             this.Controls.Add(this.button278);
@@ -5251,6 +5252,7 @@
             this.Controls.Add(this.button0);
             this.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -5552,10 +5554,10 @@
         private System.Windows.Forms.Button button285;
         private System.Windows.Forms.Button button286;
         private System.Windows.Forms.Button button287;
-        private System.Windows.Forms.Button button288;
-        private System.Windows.Forms.Button button289;
-        private System.Windows.Forms.Button button290;
-        private System.Windows.Forms.Button button291;
+        private System.Windows.Forms.Button edgeBtn3;
+        private System.Windows.Forms.Button edgeBtn1;
+        private System.Windows.Forms.Button edgeBtn0;
+        private System.Windows.Forms.Button edgeBtn2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -5575,19 +5577,19 @@
         private System.Windows.Forms.Button nextBtn14;
         private System.Windows.Forms.Button nextBtn15;
         private System.Windows.Forms.Button nextBtn16;
-        private System.Windows.Forms.Button button292;
-        private System.Windows.Forms.Button button293;
-        private System.Windows.Forms.Button button294;
-        private System.Windows.Forms.Button button295;
-        private System.Windows.Forms.Button button296;
-        private System.Windows.Forms.Button button297;
+        private System.Windows.Forms.Button edgeBtn7;
+        private System.Windows.Forms.Button edgeBtn5;
+        private System.Windows.Forms.Button edgeBtn4;
+        private System.Windows.Forms.Button edgeBtn6;
+        private System.Windows.Forms.Button edgeBtn9;
+        private System.Windows.Forms.Button edgeBtn8;
         private System.Windows.Forms.Button startBtn;
-        private System.Windows.Forms.Button button299;
+        private System.Windows.Forms.Button edgeBtn11;
         private System.Windows.Forms.Label gameModeLB;
         private System.Windows.Forms.Label boundaryAccLB;
-        private System.Windows.Forms.Button button298;
+        private System.Windows.Forms.Button edgeBtn12;
         private System.Windows.Forms.Label bombLB;
-        private System.Windows.Forms.Button button300;
+        private System.Windows.Forms.Button edgeBtn10;
         private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.Timer bombTimer;
         private System.Windows.Forms.Label recordLB;

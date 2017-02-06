@@ -67,12 +67,13 @@ namespace Tetris_New {
         public const int BLOCK_TYPE_BOMB = 15;
         public const int BLOCK_TYPE_SUPER_BOMB = 16;
 
-        //获取方块的小方块数目
+        //获取方块的小方块数目，若方块类型的常数改变，也需要作出相应改变
         public static int getBlockCount(int blockType) {
             if (blockType >= 0 && blockType <= 9) return 4;
             else if (blockType >= 10 && blockType <= 12) return 3;
-            else if (blockType == 16) return 5;
-            else return 2;
+            else if (blockType == 13 || blockType == 14) return 2;
+            else if (blockType == 15) return 1;
+            else return 5;
         }
 
         //获取方块
@@ -111,7 +112,8 @@ namespace Tetris_New {
         public static Color TextColor0 = Color.Silver;
         public static Color TextColor1 = Color.Blue;
         public static Color CustomBlockColor = Color.Lime;
-        public static Color DEFAULT_BTNS_COLOR = Color.FromArgb(224, 224, 224);
+        public static Color BTNS_DEFAULT_COLOR = Color.FromArgb(224, 224, 224);
+        public static Color BOMB_CORE_COLOR = Color.Red;
 
         //跨越边界
         public const bool NO_BOUNDARY_ACC = false;
