@@ -20,7 +20,8 @@ namespace Tetris_New {
 
         private void classicBtn_Click(object sender, EventArgs e) {
             GameForm gf = new GameForm(Constant.CLASSIC_MODE,false,false,-1,null);
-            gf.ShowDialog();
+            gf.Show();
+            this.Hide();
         }
 
         private void MenuForm_Load(object sender, EventArgs e) {
