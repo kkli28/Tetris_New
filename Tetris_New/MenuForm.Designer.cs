@@ -73,6 +73,7 @@
             this.tetrisLB = new System.Windows.Forms.Label();
             this.button43 = new System.Windows.Forms.Button();
             this.customBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // helpBtn
@@ -83,7 +84,7 @@
             this.helpBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.helpBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.helpBtn.ForeColor = System.Drawing.Color.Silver;
-            this.helpBtn.Location = new System.Drawing.Point(324, 143);
+            this.helpBtn.Location = new System.Drawing.Point(324, 118);
             this.helpBtn.Name = "helpBtn";
             this.helpBtn.Size = new System.Drawing.Size(128, 36);
             this.helpBtn.TabIndex = 0;
@@ -101,7 +102,7 @@
             this.recordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.recordBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.recordBtn.ForeColor = System.Drawing.Color.Silver;
-            this.recordBtn.Location = new System.Drawing.Point(324, 193);
+            this.recordBtn.Location = new System.Drawing.Point(324, 168);
             this.recordBtn.Name = "recordBtn";
             this.recordBtn.Size = new System.Drawing.Size(128, 36);
             this.recordBtn.TabIndex = 2;
@@ -119,7 +120,7 @@
             this.classicBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.classicBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.classicBtn.ForeColor = System.Drawing.Color.Silver;
-            this.classicBtn.Location = new System.Drawing.Point(324, 243);
+            this.classicBtn.Location = new System.Drawing.Point(324, 218);
             this.classicBtn.Name = "classicBtn";
             this.classicBtn.Size = new System.Drawing.Size(128, 36);
             this.classicBtn.TabIndex = 3;
@@ -137,7 +138,7 @@
             this.challengeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.challengeBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.challengeBtn.ForeColor = System.Drawing.Color.Silver;
-            this.challengeBtn.Location = new System.Drawing.Point(324, 293);
+            this.challengeBtn.Location = new System.Drawing.Point(324, 268);
             this.challengeBtn.Name = "challengeBtn";
             this.challengeBtn.Size = new System.Drawing.Size(128, 36);
             this.challengeBtn.TabIndex = 4;
@@ -155,7 +156,7 @@
             this.fireBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fireBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.fireBtn.ForeColor = System.Drawing.Color.Silver;
-            this.fireBtn.Location = new System.Drawing.Point(324, 343);
+            this.fireBtn.Location = new System.Drawing.Point(324, 318);
             this.fireBtn.Name = "fireBtn";
             this.fireBtn.Size = new System.Drawing.Size(128, 36);
             this.fireBtn.TabIndex = 5;
@@ -744,7 +745,7 @@
             this.customBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.customBtn.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.customBtn.ForeColor = System.Drawing.Color.Silver;
-            this.customBtn.Location = new System.Drawing.Point(324, 393);
+            this.customBtn.Location = new System.Drawing.Point(324, 368);
             this.customBtn.Name = "customBtn";
             this.customBtn.Size = new System.Drawing.Size(128, 36);
             this.customBtn.TabIndex = 54;
@@ -754,12 +755,23 @@
             this.customBtn.MouseEnter += new System.EventHandler(this.helpBtn_MouseEnter);
             this.customBtn.MouseLeave += new System.EventHandler(this.helpBtn_MouseLeave);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(411, 413);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 19);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "kkli©";
+            // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(464, 441);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.customBtn);
             this.Controls.Add(this.button43);
             this.Controls.Add(this.tetrisLB);
@@ -875,6 +887,7 @@
         private System.Windows.Forms.Label tetrisLB;
         private System.Windows.Forms.Button button43;
         private System.Windows.Forms.Button customBtn;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -353,6 +353,7 @@
             this.scoreLB = new System.Windows.Forms.Label();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
             this.timeTimer = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button0
@@ -4912,12 +4913,23 @@
             this.timeTimer.Interval = 1000;
             this.timeTimer.Tick += new System.EventHandler(this.timeTimer_Tick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Silver;
+            this.label4.Location = new System.Drawing.Point(443, 653);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 19);
+            this.label4.TabIndex = 464;
+            this.label4.Text = "kkli©";
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(496, 681);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.scoreLB);
             this.Controls.Add(this.recordLB);
             this.Controls.Add(this.edgeBtn10);
@@ -5590,5 +5602,6 @@
         private System.Windows.Forms.Label scoreLB;
         private System.Windows.Forms.Timer mainTimer;
         private System.Windows.Forms.Timer timeTimer;
+        private System.Windows.Forms.Label label4;
     }
 }
