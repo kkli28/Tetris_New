@@ -98,8 +98,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -965,7 +963,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Location = new System.Drawing.Point(8, 144);
+            this.label3.Location = new System.Drawing.Point(8, 113);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 42);
             this.label3.TabIndex = 173;
@@ -1015,9 +1013,9 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label7.Location = new System.Drawing.Point(33, 312);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(315, 21);
+            this.label7.Size = new System.Drawing.Size(518, 21);
             this.label7.TabIndex = 176;
-            this.label7.Text = "消除：1行1分，2行3分，3行5分，5行10分";
+            this.label7.Text = "消除：1行1分，2行3分，3行5分，4行10分，大于4行则20分（嘿嘿嘿）";
             this.label7.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
             this.label7.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
             // 
@@ -1039,9 +1037,9 @@
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label9.Location = new System.Drawing.Point(33, 341);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(469, 21);
+            this.label9.Size = new System.Drawing.Size(410, 21);
             this.label9.TabIndex = 178;
-            this.label9.Text = "挑战模式中，每5分获得一个普通炸弹，每20分获得一个超级炸弹";
+            this.label9.Text = "挑战模式和自定义模式可以选择是否启用扩展方块和炸弹";
             this.label9.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
             this.label9.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
             // 
@@ -1065,41 +1063,15 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(515, 21);
             this.label11.TabIndex = 180;
-            this.label11.Text = "无限火力模式中，有8个新的拓展方块，炸弹也和普通方块一起随机下落";
+            this.label11.Text = "无限火力模式中，有8个新的扩展方块，炸弹也和普通方块一起随机下落";
             this.label11.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
             this.label11.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label12.ForeColor = System.Drawing.Color.Blue;
-            this.label12.Location = new System.Drawing.Point(6, 396);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(21, 28);
-            this.label12.TabIndex = 183;
-            this.label12.Text = "·";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label13.Location = new System.Drawing.Point(33, 401);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(538, 42);
-            this.label13.TabIndex = 182;
-            this.label13.Text = "自定义模式允许自定义地图上的残留方块，以及是否添加扩展方块和炸弹，\r\n以及炸弹出现间隔";
-            this.label13.MouseEnter += new System.EventHandler(this.label3_MouseEnter);
-            this.label13.MouseLeave += new System.EventHandler(this.label3_MouseLeave);
             // 
             // HelpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 521);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
+            this.ClientSize = new System.Drawing.Size(624, 441);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label8);
@@ -1265,7 +1237,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
     }
 }

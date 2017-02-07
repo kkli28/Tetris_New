@@ -87,6 +87,7 @@ namespace Tetris_New {
             int y = p.Y;
             map[x, y] = val;
             if (x < minX) minX = x;                     //设置有值的最小行数
+            if (x > minUnchangeX) minUnchangeX = x + 1;
         }
 
         //设置值--通过方块
@@ -139,7 +140,7 @@ namespace Tetris_New {
         //消除全不为0的行，并将上面的所有行下移，out参数标志消除的行数
         public void eliminate(Block block, out int count,out int[] arr) {
             count = 0;
-            arr = new int[4];
+            arr = new int[Constant.MAX_X+1];
             //普通炸弹
             if (block.getType() == Constant.BLOCK_TYPE_BOMB) explosion(block.getPoint0(), Constant.BLOCK_TYPE_BOMB);
             //超级炸弹 

@@ -34,7 +34,7 @@ namespace Tetris_New {
         bool isBomb;                       //显示“爆炸”效果时，是炸弹还是行消除
         int[] lines;                             //待消除行的序列
 
-        bool eatSuperBomb;           //产生的所有超级炸弹中，只有奇数序或偶数序的超级炸弹出现，其余的都被我吃掉了，wa ha ha
+        bool eatSuperBomb;           //产生的所有超级炸弹中，只有奇数序或偶数序的超级炸弹出现，其余的都被我吃掉了，muah ha ha
         
         //构造函数--需要参数：游戏模式、是否跨越边界、是否有炸弹、第几关
         public GameForm(int mode, bool extra, bool haveB, int hurd, int[] stt) {
@@ -133,15 +133,27 @@ namespace Tetris_New {
             int val = block1.getValue() + 1;
             if (val > Constant.MAX_BLOCK_VALUE) val = Constant.MIN_BLOCK_VALUE;
             block2.setValue(val);
-
-            showBlock(block1);
-            showNextBlock(block2);
-
+            
             //重置游戏难度计时器
             mainTimer.Interval = Constant.DEFAULT_INTERVAL;
-
             mainTimer.Start();
-            timeTimer.Start();
+
+            if (gameMode == Constant.CUSTOM_MODE) {
+                map.eliminate(new Block_O(), out count, out lines);
+                if (count != 0) {
+                    showLines(lines, count, Constant.EXPLOSION_COLOR);
+                    bombTimer.Start();
+                    return;
+                }else {
+                    showBlock(block1);
+                    showNextBlock(block2);
+                    timeTimer.Start();
+                }
+            } else {
+                showBlock(block1);
+                showNextBlock(block2);
+                timeTimer.Start();
+            }
         }
 
         //显示方块
@@ -277,7 +289,7 @@ namespace Tetris_New {
                         } else eatSuperBomb = true;
                     }
                     return b;
-                } 
+                }
                 
                 //只启用扩展方块
                 else if (haveExtra) {
@@ -290,15 +302,9 @@ namespace Tetris_New {
                     if (value > Constant.MAX_CLASSIC_BLOCK_TYPE) {
                         if (value == Constant.MAX_CLASSIC_BLOCK_TYPE + 1) value = Constant.BLOCK_TYPE_BOMB;
                         else {
-                            if (eatSuperBomb) {
-                                eatSuperBomb = false;
-                                value = random.Next(0, Constant.MAX_CLASSIC_BLOCK_TYPE + 3);
-                                if (value == Constant.MAX_CLASSIC_BLOCK_TYPE + 1) value = Constant.BLOCK_TYPE_BOMB;
-                                else value = Constant.BLOCK_TYPE_SUPER_BOMB;
-                            }else {
-                                eatSuperBomb = true;
-                                value = Constant.BLOCK_TYPE_SUPER_BOMB;
-                            }
+                            int v = random.Next(0, Constant.MAX_CLASSIC_BLOCK_TYPE + 2);
+                            if (v == Constant.MAX_CLASSIC_BLOCK_TYPE + 1) value = Constant.BLOCK_TYPE_SUPER_BOMB;
+                            else value = v;
                         }
                     }
                     return Constant.getBlock(value);
@@ -607,7 +613,7 @@ namespace Tetris_New {
                     count = 0;
                     isBomb = false;
                     inGame = false;
-                    int[] array = new int[4] { 0, 0, 0, 0 };
+                    int[] array = new int[Constant.MAX_X + 1];
                     int type = block1.getType();
 
                     //炸弹
@@ -631,7 +637,7 @@ namespace Tetris_New {
                                 case 2: score += 3; break;
                                 case 3: score += 5; break;
                                 case 4: score += 10; break;
-                                default: throw new Exception();
+                                default: score += 20; break;
                             }
 
                             scoreLB.Text = score.ToString();
