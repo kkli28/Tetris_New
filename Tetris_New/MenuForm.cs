@@ -77,6 +77,10 @@ namespace Tetris_New {
             gf.Show();
             this.Hide();
         }
-        
+
+        private void recordBtn_Click(object sender, EventArgs e) {
+            RecordForm rf = new RecordForm();
+            rf.ShowDialog();
+        }
     }
 }

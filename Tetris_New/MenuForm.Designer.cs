@@ -107,6 +107,7 @@
             this.recordBtn.TabIndex = 2;
             this.recordBtn.Text = "记录";
             this.recordBtn.UseVisualStyleBackColor = false;
+            this.recordBtn.Click += new System.EventHandler(this.recordBtn_Click);
             this.recordBtn.MouseEnter += new System.EventHandler(this.helpBtn_MouseEnter);
             this.recordBtn.MouseLeave += new System.EventHandler(this.helpBtn_MouseLeave);
             // 

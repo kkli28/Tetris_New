@@ -137,9 +137,9 @@ namespace Tetris_New {
         }
 
         //消除全不为0的行，并将上面的所有行下移，out参数标志消除的行数
-        public void eliminate(Block block, out int count) {
+        public void eliminate(Block block, out int count,out int[] arr) {
             count = 0;
-
+            arr = new int[4];
             //普通炸弹
             if (block.getType() == Constant.BLOCK_TYPE_BOMB) explosion(block.getPoint0(), Constant.BLOCK_TYPE_BOMB);
             //超级炸弹 
@@ -158,8 +158,8 @@ namespace Tetris_New {
                         }
                     }
                     if (needElim) {
-                        ++count;
                         moveLines(i);                   //第i行上面所有行下移
+                        arr[count++] = i;
                         minUnchangeX = i + 1;
                     }
                 }

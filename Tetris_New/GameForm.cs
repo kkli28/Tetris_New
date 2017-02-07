@@ -16,6 +16,7 @@ namespace Tetris_New {
         int score;                             //得分
         int record;                           //记录
         int time;                               //游戏时间
+        int count;                             //一次消除的行数
         bool haveExtra;                   //是否启用扩展方块
         bool haveBomb;                  //是否有炸弹
         int hurdle;                            //关卡
@@ -30,6 +31,8 @@ namespace Tetris_New {
         Block block2;                       //第二个方块
 
         string[] records;                   //文件中的记录数组
+        bool isBomb;                       //显示“爆炸”效果时，是炸弹还是行消除
+        int[] lines;                             //待消除行的序列
 
         bool eatSuperBomb;           //产生的所有超级炸弹中，只有奇数序或偶数序的超级炸弹出现，其余的都被我吃掉了，wa ha ha
         
@@ -40,6 +43,7 @@ namespace Tetris_New {
             random = new Random();
             score = 0;
             record = 0;
+            count = 0;
             gameMode = mode;
             haveExtra = extra;
             haveBomb = haveB;
@@ -49,6 +53,7 @@ namespace Tetris_New {
             map = new Map();
             inGame = false;
             gameIsOver = false;
+            isBomb = false;
 
             //读取记录
             records = new string[3] { "0", "0", "0" };
@@ -112,14 +117,17 @@ namespace Tetris_New {
             map.reset();
             initBlocks();
             inGame = true;
+            gameIsOver = false;
             block1 = getBlock();
             block2 = getBlock();
 
             time = 0;
             score = 0;
+            count = 0;
             scoreLB.Text = "0";
 
             eatSuperBomb = true;
+            isBomb = false;
 
             //避免两个方块颜色相同，置第二个方块颜色为前一个方块颜色的下一个颜色
             int val = block1.getValue() + 1;
@@ -130,9 +138,10 @@ namespace Tetris_New {
             showNextBlock(block2);
 
             //重置游戏难度计时器
-            //mainTimer.Interval = Constant.DEFAULT_INTERVAL;
+            mainTimer.Interval = Constant.DEFAULT_INTERVAL;
 
             mainTimer.Start();
+            timeTimer.Start();
         }
 
         //显示方块
@@ -411,14 +420,10 @@ namespace Tetris_New {
         }
         
         //刷新地图
-        public void refreshBtns() {
+        public void refreshBtns(int cnt) {
             int[,] array = map.getMap();
-            int minX = map.getMinX() - 1;
-            int minUnchangeX = map.getMinUnchangeX()+1;
-            if (minX < 0) minX = 0;
-            else if (minX > Constant.MAX_X) minX = Constant.MAX_X;
-            if (minUnchangeX < 0) minUnchangeX = 0;
-            else if (minUnchangeX > Constant.MAX_Y+1) minUnchangeX = Constant.MAX_X+1;
+            int minX = map.getMinX() - cnt;
+            int minUnchangeX = map.getMinUnchangeX();
             
             for(int i = minX; i < minUnchangeX; ++i) {
                 for (int j = 0; j < Constant.MAX_Y + 1; ++j)
@@ -487,11 +492,20 @@ namespace Tetris_New {
         }
 
         private void startBtn_Click(object sender, EventArgs e) {
-            startGame();
+            if (inGame == true) {
+                mainTimer.Stop();
+                DialogResult result = MessageBox.Show("确定重新开始游戏？", "提示",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                if (result == DialogResult.Yes)
+                    startGame();
+                else mainTimer.Start();
+            } else {
+                startGame();
+            }
         }
 
         //显示爆炸效果
-        public void showExplosion(Block block, bool show) {
+        public void showExplosion(Block block, Color color) {
             int type = block.getType();
             int addV = 0;
             Point p;
@@ -514,12 +528,20 @@ namespace Tetris_New {
             if (endY > Constant.MAX_Y) endY = Constant.MAX_Y;
 
             int index = -1;
-            Color color;
-            if (show) color = Constant.EXPLOSION_COLOR;
-            else color = Constant.BTNS_DEFAULT_COLOR;
             for (int i = begX; i <= endX; ++i) {
                 for (int j = begY; j <= endY; ++j) {
                     index = i * (Constant.MAX_Y + 1) + j;
+                    getBtn(index).BackColor = color;
+                }
+            }
+        }
+
+        //显示行消除效果
+        public void showLines(int[] arr,int cnt,Color color) {
+            int index = -1;
+            for(int i = 0; i < cnt; ++i) {
+                for(int j = 0; j < Constant.MAX_Y + 1; ++j) {
+                    index = arr[i] * (Constant.MAX_Y + 1) + j;
                     getBtn(index).BackColor = color;
                 }
             }
@@ -537,22 +559,38 @@ namespace Tetris_New {
             index = p.X * (Constant.MAX_Y + 1) + p.Y;
             if (map.getValue(index) != 0) return true;
 
+            p = block.getPoint1();
+            index = p.X * (Constant.MAX_Y + 1) + p.Y;
+            if (map.getValue(index) != 0) return true;
+            
             if (bc >= 3) {
-                p = block.getPoint1();
+                p = block.getPoint2();
                 index = p.X * (Constant.MAX_Y + 1) + p.Y;
                 if (map.getValue(index) != 0) return true;
             }
 
             if (bc == 4) {
-                p = block.getPoint0();
+                p = block.getPoint3();
                 index = p.X * (Constant.MAX_Y + 1) + p.Y;
                 if (map.getValue(index) != 0) return true;
             }
 
             return false;
         }
-
+        
         private void mainTimer_Tick(object sender, EventArgs e) {
+            if (gameIsOver) {
+                mainTimer.Stop();
+                timeTimer.Stop();
+                GameOverForm gof = new GameOverForm(gameMode, score, record, records);
+                gof.ShowDialog();
+                if (record < score) {
+                    record = score;
+                    recordLB.Text = record.ToString();
+                }
+                return;
+            }
+
             if (inGame) {
 
                 //能下移
@@ -564,23 +602,29 @@ namespace Tetris_New {
 
                 //不能下移
                 else {
-                    int count = 0;
+
+                    //重置变量，以及不允许用户按键
+                    count = 0;
+                    isBomb = false;
+                    inGame = false;
+                    int[] array = new int[4] { 0, 0, 0, 0 };
                     int type = block1.getType();
 
                     //炸弹
                     if (type == Constant.BLOCK_TYPE_BOMB || type == Constant.BLOCK_TYPE_SUPER_BOMB) {
-                        map.eliminate(block1, out count);
+                        map.eliminate(block1, out count,out lines);
+                        isBomb = true;
                         mainTimer.Stop();
-                        inGame = false;
+                        showExplosion(block1, Constant.EXPLOSION_COLOR);                            //显示爆炸效果
                         bombTimer.Start();
-                        showExplosion(block1, true);
+                        return;                                                 //显示爆炸后不再执行后面的代码
                     }
 
                     //普通方块
                     else {
                         addBlockToMap(block1);
-                        map.eliminate(block1, out count);
-                        if (count == 0) ;
+                        map.eliminate(block1, out count,out lines);
+                        if (count == 0) ;                   //没有产生消除则不做任何事
                         else {
                             switch (count) {
                                 case 1: score += 1; break;
@@ -589,25 +633,57 @@ namespace Tetris_New {
                                 case 4: score += 10; break;
                                 default: throw new Exception();
                             }
-                        }
-                        setBlock1AndBlock2();
 
-                        inGame = false;
-                        if (isGameOver(block1)) {
-                            inGame = false;
+                            scoreLB.Text = score.ToString();
+
                             mainTimer.Stop();
-                            MessageBox.Show("游戏结束！");
-                            resetBtns();
-                            eraseNextBlock();
-                            return;
-                        } else {
-                            inGame = true;
-                            showBlock(block1);
-                            showNextBlock(block2);
+                            showLines(lines, count, Constant.EXPLOSION_COLOR);                          //显示行消除效果
+                            bombTimer.Start();
+                            return;                                         //显示行消除后，不再执行后续的代码
                         }
+                    }
+
+                    //走到这里，说明没有产生爆炸，也没有产生消除
+                    setBlock1AndBlock2();
+
+                    if (isGameOver(block1)) {
+                        gameIsOver = true;
+                        inGame = false;
+                        showLastBlock();
+                        showNextBlock(block2);
+                        return;
+                    } else {
+                        showBlock(block1);
+                        showNextBlock(block2);
+                        inGame = true;
                     }
                 }
             }
+        }
+
+        private void bombTimer_Tick(object sender, EventArgs e) {
+            bombTimer.Stop();
+
+            if (isBomb) showExplosion(block1, Constant.BTNS_DEFAULT_COLOR);               //结束爆炸效果
+            else {
+                showLines(lines, count, Constant.BTNS_DEFAULT_COLOR);
+                refreshBtns(count);
+            }
+
+            setBlock1AndBlock2();
+
+            //即使是爆炸或消除后，也可能下一个方块的出现位置已被占据
+            if (isGameOver(block1)) {
+                gameIsOver = true;
+                inGame = false;
+                showLastBlock();
+                showNextBlock(block2);
+            }else {
+                showBlock(block1);
+                showNextBlock(block2);
+                inGame = true;
+            }
+            mainTimer.Start();
         }
 
         //设置边框颜色
@@ -617,18 +693,35 @@ namespace Tetris_New {
             edgeBtn2.BackColor = color;
             edgeBtn3.BackColor = color;
         }
-
+        
         //显示游戏结束时最后的方块
         public void showLastBlock() {
             if (map.getMinX() == 0) return;                //地图中有值的最小行已是最顶行，则不显示了
-            Color color = Constant.valueToColor(block1.getType());
-            int index = Constant.MAX_Y / 2;
+            Color color = Constant.valueToColor(block1.getValue());
+            int[] arr = new int[4] { 0, 0, 0, 0 };
+            int len = 0;
 
-            //并不是按照block1的形状来设置的，因为游戏结束时玩家来不及估计右边的下一个方块
-            //故随意设置3个格子就行
-            getBtn(index - 1).BackColor = color;
-            getBtn(index).BackColor = color;
-            getBtn(index + 1).BackColor = color;
+            switch (block1.getType()) {
+                case Constant.BLOCK_TYPE_O: arr = new int[2] { 5, 6 }; len = 2; break;
+                case Constant.BLOCK_TYPE_I: arr = new int[4] { 4, 5, 6, 7 }; len = 4; break;
+                case Constant.BLOCK_TYPE_T: arr = new int[3] { 4, 5, 6 }; len = 3; break;
+                case Constant.BLOCK_TYPE_L: arr = new int[3] { 4, 5, 6 }; len = 3; break;
+                case Constant.BLOCK_TYPE_J: arr = new int[3] { 4, 5, 6 }; len = 3; break;
+                case Constant.BLOCK_TYPE_S: arr = new int[2] { 4,5 }; len = 2; break;
+                case Constant.BLOCK_TYPE_Z: arr = new int[2] { 5, 6 }; len = 2; break;
+                case Constant.BLOCK_TYPE_EXTENSION1: arr = new int[1] { 6 }; len = 1; break;
+                case Constant.BLOCK_TYPE_EXTENSION2: arr = new int[3] { 4,5, 6 }; len = 3; break;
+                case Constant.BLOCK_TYPE_EXTENSION3: arr = new int[1] { 6 }; len = 1; break;
+                case Constant.BLOCK_TYPE_EXTENSION4: arr = new int[1] { 5 }; len = 1; break;
+                case Constant.BLOCK_TYPE_EXTENSION5: arr = new int[2] { 5, 6 }; len = 2; break;
+                case Constant.BLOCK_TYPE_EXTENSION6: arr = new int[2] { 5, 6 }; len = 2; break;
+                case Constant.BLOCK_TYPE_EXTENSION7: arr = new int[2] { 5, 6 }; len = 2; break;
+                case Constant.BLOCK_TYPE_EXTENSION8: arr = new int[2] { 4,5 }; len = 2; break;
+                default: throw new Exception();
+            }
+
+            for (int i = 0; i < len; ++i)
+                getBtn(arr[i]).BackColor = color;
         }
         
         //将方块添加到图中
@@ -652,19 +745,7 @@ namespace Tetris_New {
             }
         }
 
-        private void bombTimer_Tick(object sender, EventArgs e) {
-            bombTimer.Stop();
-            inGame = true;
-            mainTimer.Start();
-
-            showExplosion(block1, false);
-            setBlock1AndBlock2();
-            showBlock(block1);
-            showNextBlock(block2);
-        }
-
         
-
 
         //显示下一个方块
         //因为方块的Point对应的位置与右侧的展示框Buttons的编号没有对应关系，故嘿嘿嘿！！！
@@ -693,14 +774,14 @@ namespace Tetris_New {
                         nextBtn11.BackColor = color; break;
                     }
                 case 3: {
-                        nextBtn2.BackColor = color;
-                        nextBtn6.BackColor = color;
+                        nextBtn7.BackColor = color;
+                        nextBtn9.BackColor = color;
                         nextBtn10.BackColor = color;
                         nextBtn11.BackColor = color; break;
                     }
                 case 4: {
-                        nextBtn3.BackColor = color;
-                        nextBtn7.BackColor = color;
+                        nextBtn5.BackColor = color;
+                        nextBtn9.BackColor = color;
                         nextBtn10.BackColor = color;
                         nextBtn11.BackColor = color; break;
                     }
@@ -1421,6 +1502,14 @@ namespace Tetris_New {
                         break;
                     }
                 default: break;
+            }
+        }
+
+        private void timeTimer_Tick(object sender, EventArgs e) {
+            ++time;
+            if (time == 20) {
+                time = 0;
+                if (mainTimer.Interval > 200) mainTimer.Interval -= 20;
             }
         }
     }

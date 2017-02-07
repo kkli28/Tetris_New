@@ -86,7 +86,7 @@ namespace Tetris_New {
             int size = 0;
 
             if (state == 0) {
-                points = new Point[] { point1, point2 };
+                points = new Point[] { point1, point3 };
                 size = 2;
             } else {
                 points = new Point[] { point0, point1, point3 };

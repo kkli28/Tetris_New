@@ -352,6 +352,7 @@
             this.recordLB = new System.Windows.Forms.Label();
             this.scoreLB = new System.Windows.Forms.Label();
             this.mainTimer = new System.Windows.Forms.Timer(this.components);
+            this.timeTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button0
@@ -4906,6 +4907,11 @@
             // 
             this.mainTimer.Tick += new System.EventHandler(this.mainTimer_Tick);
             // 
+            // timeTimer
+            // 
+            this.timeTimer.Interval = 1000;
+            this.timeTimer.Tick += new System.EventHandler(this.timeTimer_Tick);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
@@ -5583,5 +5589,6 @@
         private System.Windows.Forms.Label recordLB;
         private System.Windows.Forms.Label scoreLB;
         private System.Windows.Forms.Timer mainTimer;
+        private System.Windows.Forms.Timer timeTimer;
     }
 }
