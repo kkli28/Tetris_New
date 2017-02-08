@@ -110,7 +110,7 @@ namespace Tetris_New {
                 points = new Point[] { point0, point1 };
                 size = 2;
             } else {
-                points = new Point[] { point0, point1, point3 };
+                points = new Point[] { point1, point2, point3 };
                 size = 3;
             }
             return checkPos(map, points, size, "right");

@@ -56,8 +56,8 @@ namespace Tetris_New {
                 points[2].set(point1.X - 1, point1.Y);
                 points[3].set(point1.X + 1, point1.Y);
             } else {
-                points[0].set(point0.X - 1, point1.Y);
-                points[1].set(point2.X + 1, point1.Y);
+                points[0].set(point0.X, point1.Y-1);
+                points[1].set(point2.X, point1.Y+1);
                 points[2].set(point1.X, point1.Y - 1);
                 points[3].set(point1.X, point1.Y + 1);
             }

@@ -56,7 +56,7 @@ namespace Tetris_New {
             } else if (state == 1) {
                 points[0].set(point0.X + 1, point0.Y);
                 points[1].set(point2.X + 1, point2.Y);
-                points[2].set(point2.Y + 1, point2.Y - 1);
+                points[2].set(point2.X + 1, point2.Y - 1);
             }else if (state == 2) {
                 points[0].set(point2.X, point2.Y - 1);
                 points[1].set(point2.X + 1, point2.Y);
@@ -72,67 +72,20 @@ namespace Tetris_New {
         
         //能否左移
         public override bool canMoveLeft(Map map) {
-            Point[] points;
-            int size = 0;
-
-            if (state == 0) {
-                points = new Point[] { point0, point2 };
-                size = 2;
-            }else if (state == 1) {
-                points = new Point[] { point0, point1, point2 };
-                size = 3;
-            }else if (state == 2) {
-                points = new Point[] { point1, point2 };
-                size = 2;
-            }else {
-                points = new Point[] { point0, point1, point2 };
-                size = 3;
-            }
-
-            return checkPos(map, points, size, "left");
+            Point[] points = new Point[] { point0, point1, point2 };
+            return checkPos(map, points, 3, "left");
         }
 
         //能否右移
         public override bool canMoveRight(Map map) {
-            Point[] points;
-            int size = 0;
-
-            if (state == 0) {
-                points = new Point[] { point1, point2 };
-                size = 2;
-            } else if (state == 1) {
-                points = new Point[] { point0, point1, point2 };
-                size = 3;
-            } else if (state == 2) {
-                points = new Point[] { point0, point2 };
-                size = 2;
-            } else {
-                points = new Point[] { point0, point1, point2 };
-                size = 3;
-            }
-
-            return checkPos(map, points, size, "right");
+            Point[] points = new Point[] { point0, point1, point2 };
+            return checkPos(map, points, 3, "right");
         }
 
         //能否下移
         public override bool canMoveDown(Map map) {
-            Point[] points;
-            int size = 0;
-            if (state == 0) {
-                points = new Point[] { point0, point1, point2 };
-                size = 3;
-            } else if (state == 1) {
-                points = new Point[] { point1, point2 };
-                size = 2;
-            } else if (state == 2) {
-                points = new Point[] { point0, point1, point2 };
-                size = 3;
-            } else {
-                points = new Point[] { point0, point2 };
-                size = 2;
-            }
-
-            return checkPos(map, points, size, "down");
+            Point[] points = new Point[] { point0, point1, point2};
+            return checkPos(map, points, 3, "down");
         }
 
         //旋转--更新点

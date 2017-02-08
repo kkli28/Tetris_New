@@ -19,11 +19,11 @@ namespace Tetris_New {
         //构造函数
         public Block_SuperBomb() {
             value = Constant.BLOCK_BOMB_OUT_VALUE;
-            point0 = new Point(0, 6);
-            point1 = new Point(1, 5);
-            point2 = new Point(1, 7);
-            point3 = new Point(2, 6);
-            point4 = new Point(1, 6);
+            point0 = new Point(0, 5);
+            point1 = new Point(1, 4);
+            point2 = new Point(1, 6);
+            point3 = new Point(2, 5);
+            point4 = new Point(1, 5);
 
             type = Constant.BLOCK_TYPE_SUPER_BOMB;
             state = 0;

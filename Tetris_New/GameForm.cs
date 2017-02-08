@@ -436,7 +436,7 @@ namespace Tetris_New {
                     getBtn(i*(Constant.MAX_Y+1)+j).BackColor = Constant.valueToColor(array[i, j]);
             }
         }
-
+        
         //置block1为block2，block2重新随机获得一个方块
         public void setBlock1AndBlock2() {
 
